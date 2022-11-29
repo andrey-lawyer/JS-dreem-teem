@@ -1,47 +1,18 @@
 .header__logo-svg {
-    fill: var(--color-background-modal);
-    color: var(--color-background-modal);
-    height: 24px;
-    width: 24px;
+  fill: var(--color-background-modal);
+  color: var(--color-background-modal);
+  height: 24px;
+  width: 24px;
 }
 header {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    padding: 45px 20px;
-    height: 230px;
-  
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 45px 20px;
+  height: 230px;
 
-    font-weight: 500;
-    color: var(--color-background-modal);
-  
-    background-color: var(--color-font-secondary);
-    background-image: 
-    linear-gradient(
+  font-weight: 500;
+  color: var(--color-background-modal);
 
-      ),
-      url(/src/images/header-home/background-home-tel-1x.jpg);
-      background-position: top;
-      background-repeat: no-repeat;
-      background-size: cover;
-  
-    @include mq(tab-only) {
-      padding: 45px 60px 20px;
-      background-image: 
-      linear-gradient(
-
-        ),
-        url(../images/header-background-tablet@2x.jpg);
-    }
-  
-    @media screen and (min-width: $desktop) {
-      padding-top: 40px;
-      background-image: linear-gradient(
-
-        ),
-        url(../images/header-background-desktop@2x.jpg);
-    }    
-  }
-  
-
-  
+  background-color: var(--color-font-secondary);
+}
