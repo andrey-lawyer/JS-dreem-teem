@@ -43,7 +43,12 @@ const onSearchFormSubmit = async event => {
       if (movie.release_date) {
         movie.release_date = '|  ' + movie.release_date.slice(0, 4);
       }
-      movie.original_title = movie.original_title.toUpperCase();
+      if (movie.original_title) {
+        movie.original_title = movie.original_title.toUpperCase();
+      }
+      if (!movie.poster_path) {
+        movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+      }
 
       const newArr = [];
       movie.genre_ids.map((element, index, array) => {
@@ -120,7 +125,12 @@ const loadTrendingMovies = async event => {
       if (movie.release_date) {
         movie.release_date = '|  ' + movie.release_date.slice(0, 4);
       }
-      movie.original_title = movie.original_title.toUpperCase();
+      if (movie.original_title) {
+        movie.original_title = movie.original_title.toUpperCase();
+      }
+      if (!movie.poster_path) {
+        movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+      }
 
       const newArr = [];
       movie.genre_ids.map((element, index, array) => {
