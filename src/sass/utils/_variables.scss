@@ -6,6 +6,9 @@
   --color-button: #ff6b01;
   --color-font: #000000;
   --color-font-secondary: #545454;
+  // animation
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
 }
 
 // tui-pagination
