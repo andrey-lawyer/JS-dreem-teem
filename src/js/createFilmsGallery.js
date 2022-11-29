@@ -103,7 +103,7 @@ const loadTrendingMovies = async event => {
   // if (!trending.isNextDataExist()) {
   //   loadMoreBtn.classList.add('is-hidden');
   //   Notiflix.Notify.failure(
-  //     "Were sorry, but you've reached the end of search results."
+  //     "sorry, the end of search results reached."
   //   );
   //   return;
   // }
