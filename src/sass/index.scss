@@ -1,4 +1,6 @@
 @import './common';
+@import './utils/mixins';
+
 @import './container';
 @import './layout/headerMainPage';
 @import './layout/headerMyLibrary';
@@ -11,3 +13,4 @@
 @import './layout/footer';
 
 // @import './example';
+@import './utils/variables';
