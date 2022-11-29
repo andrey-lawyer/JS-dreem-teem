@@ -15,33 +15,37 @@ header {
     font-weight: 500;
     color: var(--color-background-modal);
   
-    background-color: var(--color-font-secondary);
+    background-color: var(--color-font-secondary);  
     background-image: 
-    linear-gradient(
-
-      ),
       url(/src/images/header-home/background-home-tel-1x.jpg);
       background-position: top;
       background-repeat: no-repeat;
       background-size: cover;
-  
-    @include mq(tab-only) {
+      @include retina {
+        background-image: 
+      url(/src/images/header-home/background-home-tel-2x.jpg);
+    } 
+      @include mq(tab-only) {
       padding: 45px 60px 20px;
       background-image: 
-      linear-gradient(
-
-        ),
-        url(../images/header-background-tablet@2x.jpg);
+      url(/src/images/header-home/background-home-tab-1x.jpg);
+        @include retina {
+            background-image: 
+            url(/src/images/header-home/background-home-tab-2x.jpg);
+        }
     }
   
-    @media screen and (min-width: $desktop) {
+    @include mq(desk) {
+        {
       padding-top: 40px;
-      background-image: linear-gradient(
-
-        ),
-        url(../images/header-background-desktop@2x.jpg);
-    }    
+      background-image: 
+      url(/src/images/header-home/background-home-desk-1x.jpg);
+        @include retina {
+            background-image: 
+            url(/src/images/header-home/background-home-desk-2x.jpg);
+        }
   }
+  
   
 
   
