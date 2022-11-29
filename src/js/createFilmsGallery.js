@@ -102,6 +102,9 @@ const loadTrendingMovies = async event => {
     trending.total_results = response.data.total_results;
 
     response.data.results.forEach(movie => {
+      movie.release_date = '|  ' + movie.release_date.slice(0, 4);
+      movie.original_title = movie.original_title.toUpperCase();
+
       const newArr = [];
       movie.genre_ids.map((element, index, array) => {
         genres.forEach(genre => {
