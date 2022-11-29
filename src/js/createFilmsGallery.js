@@ -4,6 +4,7 @@ import Notiflix from 'notiflix';
 import { FilmSearch } from './filmsearch';
 import createCards from '../templates/filmcard.hbs';
 import { Trending } from './trending';
+import { genres } from './genres';
 
 const searchFormEl = document.querySelector('.search-form');
 const galleryEl = document.querySelector('.gallery');
@@ -11,6 +12,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
 
+// ====================Search Films========================
 const onSearchFormSubmit = async event => {
   event.preventDefault();
 
@@ -92,17 +94,32 @@ const loadTrendingMovies = async event => {
   //   );
   //   return;
   // }
-  trending.page += 1;
+
+  // trending.page += 1;
 
   try {
     const response = await trending.fetchTrendingFilms();
     trending.total_results = response.data.total_results;
 
+    response.data.results.forEach(movie => {
+      const newArr = [];
+      movie.genre_ids.map((element, index, array) => {
+        genres.forEach(genre => {
+          if (genre.id == element) {
+            newArr.push(genre.name);
+          }
+        });
+      });
+      if (newArr.length > 2) {
+        newArr.splice(2, newArr.length - 2, 'Other');
+      }
+      movie.genre_ids = [...newArr];
+    });
+
     galleryEl.insertAdjacentHTML(
       'beforeend',
       createCards(response.data.results)
     );
-    //   !!!!!!
   } catch (error) {
     console.log(error);
   }
