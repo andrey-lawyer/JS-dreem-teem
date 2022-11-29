@@ -1,6 +1,4 @@
 import Notiflix from 'notiflix';
-// import axios from 'axios';
-
 import { FilmSearch } from './filmsearch';
 import createCards from '../templates/filmcard.hbs';
 import { Trending } from './trending';
@@ -71,7 +69,7 @@ const onLoadMoreBtnClick = async event => {
     console.log(error);
   }
 
-  //   плавне прокручування
+  //   scroll
   const { height: cardHeight } = document
     .querySelector('.gallery')
     .firstElementChild.getBoundingClientRect();
