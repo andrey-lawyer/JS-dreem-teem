@@ -92,7 +92,7 @@ const loadTrendingMovies = async event => {
   //   );
   //   return;
   // }
-  filmSearch.page += 1;
+  trending.page += 1;
 
   try {
     const response = await trending.fetchTrendingFilms();
