@@ -1,0 +1,137 @@
+.header {
+  display: block;
+  //   margin: 0 auto;
+  // width: 100%;
+  // padding: 40px 20px 92px 20px;
+
+  // font-family: 'Roboto';
+  // font-weight: 500;
+  // color: var(--color-background-modal);
+
+  background-color: var(--color-font-secondary);
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(/src/images/header-home/background-home-tel-1x.jpg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include retina {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(/src/images/header-home/background-home-tel-2x.jpg);
+  }
+  @include mq(tab-only) {
+    background-image: url(/src/images/header-home/background-home-tab-1x.jpg);
+    @include retina {
+      background-image: url(/src/images/header-home/background-home-tab-2x.jpg);
+    }
+  }
+
+  @include mq(desk) {
+    background-image: url(/src/images/header-home/background-home-desk-1x.jpg);
+    @include retina {
+      background-image: url(/src/images/header-home/background-home-desk-2x.jpg);
+    }
+  }
+}
+
+.header__wrap {
+  display: flex;
+}
+.nav {
+  margin-left: auto;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.header__logo-link {
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  @include mq(mob-only) {
+    margin-bottom: 54px;
+  }
+  @include mq(tab) {
+    margin-bottom: 40px;
+  }
+}
+
+.current::after {
+  content: '';
+  position: absolute;
+  top: 58px;
+  width: 100%;
+  height: 3px;
+  // border-radius: 4px;
+  background-color: #ff001b;
+  bottom: 0;
+  left: 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  @include mq(mob-only) {
+    width: 100%;
+    max-width: 450px;
+  }
+  @include mq(tab) {
+    width: 336px;
+  }
+  @include mq(desk) {
+    width: 394px;
+  }
+}
+
+.search__input {
+  color: var(--color-background);
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid var(--color-background-modal);
+}
+
+::-webkit-input-placeholder {
+  color: var(--color-background);
+}
+
+//проблема с черточкой снизу
+.search__input::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-accent-red);
+}
+
+.search__button {
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+  background-color: transparent;
+  border: none;
+}
+
+.form__wrap {
+  display: flex;
+  justify-content: center;
+}
