@@ -3,6 +3,7 @@ import { FilmSearch } from './filmsearch';
 import createCards from '../templates/filmcard.hbs';
 import { Trending } from './trending';
 import { genres } from './genres';
+import pagination from './pagination'
 
 const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.gallery');
