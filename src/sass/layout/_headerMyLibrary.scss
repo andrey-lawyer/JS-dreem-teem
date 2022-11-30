@@ -5,12 +5,12 @@
     background-color: grey;
     background-size: cover;
     background-position: center;
-
+}
+.header-container__img{
     background-image: linear-gradient(to right,
-            rgba(0, 0, 0, 0.56),
-            rgba(0, 0, 0, 0.56)),
-        url('../images/header.jpg');
-
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)),
+    url('../images/header.jpg');
 }
 .logo{
     text-decoration: none;
