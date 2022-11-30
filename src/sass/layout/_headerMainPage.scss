@@ -1,19 +1,30 @@
-.header__home {
+.header {
+  display: block;
+  //   margin: 0 auto;
+  width: 100%;
+  padding: 40px 20px 92px 20px;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: var(--color-background-modal);
+
   background-color: var(--color-font-secondary);
-  background-image:linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.56),
-    rgba(0, 0, 0, 0.56)
-  ), url(/src/images/header-home/background-home-tel-1x.jpg);
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url(/src/images/header-home/background-home-tel-1x.jpg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   @include retina {
     background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ), url(/src/images/header-home/background-home-tel-2x.jpg);
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(/src/images/header-home/background-home-tel-2x.jpg);
   }
   @include mq(tab-only) {
     padding: 40px 32px 81px 32px;
@@ -82,118 +93,120 @@
 //   margin-left: auto;
 // }
 
-// .nav__list {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     margin-bottom: 40px;
-// }
-// .header__logo-link {
-//     padding: 0;
-//     display: flex;
-//     align-items: center;
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.header__logo-link {
+  padding: 0;
+  display: flex;
+  align-items: center;
 
-//     @include mq(mob-only){
-//       margin-bottom: 54px;
-//     }
-//     @include mq(tab) {
-//       margin-bottom: 40px;
-//     }
-// }
+  @include mq(mob-only) {
+    margin-bottom: 54px;
+  }
+  @include mq(tab) {
+    margin-bottom: 40px;
+  }
+}
 
-// .header__logo-svg {
-//     align-self: center;
-//     fill: var(--color-background-modal);
-//     color: var(--color-background-modal);
-//     height: 24px;
-//     width: 24px;
-// }
+.header__logo-svg {
+  align-self: center;
+  fill: var(--color-background-modal);
+  color: var(--color-background-modal);
+  height: 24px;
+  width: 24px;
+}
 
-// .header__logo-text {
-//   margin-left: 8px;
-//     font-size: 30px;
-//     line-height: 1.17;
-//     @include mq(mob-only) {
-//         display: none;
-//     }
-// }
-// .nav__link {
-//     color: var(--color-background-modal);
-//     text-decoration: none;
-//     text-transform: uppercase;
-//     font-size: 12px;
-//     line-height: 1.7;
+.header__logo-text {
+  margin-left: 8px;
+  font-size: 30px;
+  line-height: 1.17;
+  @include mq(mob-only) {
+    display: none;
+  }
+}
+.nav__link {
+  color: var(--color-background-modal);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.7;
 
-//     position: relative;
-// }
+  position: relative;
+}
 
-// .current::after {
-//     content: "";
-//     position: absolute;
-//     left: 0;
-//     bottom: -3px;
-  
-//     display: block;
-//     width: 100%;
-//     height: 3px;
-//     background-color: var(--color-accent-red);
-// }
+.current::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-accent-red);
+}
 
 // .nav__link-library {
 //   margin-left: 40px;
 // }
 
 .search {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    @include mq(mob-only) {
-        width: 100%;
-        max-width: 450px;
-    }
-    @include mq(tab) {
-        width: 336px;
-    }
-    @include mq(desk) {
-        width: 394px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  @include mq(mob-only) {
+    width: 100%;
+    max-width: 450px;
+  }
+  @include mq(tab) {
+    width: 336px;
+  }
+  @include mq(desk) {
+    width: 394px;
+  }
 }
 
 .search__input {
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    border-bottom: 0.5px solid var(--color-background-modal);
+  color: var(--color-background);
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid var(--color-background-modal);
+}
 
+::-webkit-input-placeholder {
+  color: var(--color-background);
 }
 
 //проблема с черточкой снизу
 .search__input::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-accent-red);
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
 
-
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-accent-red);
 }
 
 .search__button {
-    position: absolute;
-    right: 0;
-    bottom: 6px;
-    background-color: transparent;
-    border: none;
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+  background-color: transparent;
+  border: none;
 }
 
 .form__wrap {
   display: flex;
   justify-content: center;
-  
 }
-
