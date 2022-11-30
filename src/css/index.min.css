@@ -1,0 +1,214 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+:root {
+  --color-background: #e5e5e5;
+  --color-footer: #f7f7f7;
+  --color-background-modal: #ffffff;
+  --color-button: #ff6b01;
+  --color-font: #000000;
+  --color-font-secondary: #545454;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
+}
+
+/* reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+link {
+  text-decoration: none;
+  color: currentColor;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  min-width: 320px;
+  max-width: 448px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media screen and (min-width: 1281px) {
+  .container {
+    max-width: 1281px;
+  }
+}
+
+.galary_list {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  row-gap: 20px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .galary_list {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-column-gap: 32px;
+       -moz-column-gap: 32px;
+            column-gap: 32px;
+    row-gap: 32px;
+  }
+}
+@media screen and (min-width: 1281px) {
+  .galary_list {
+    -webkit-column-gap: 16px;
+       -moz-column-gap: 16px;
+            column-gap: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .gallery__item {
+    -ms-flex-preferred-size: calc((100% - 32px) / 2);
+        flex-basis: calc((100% - 32px) / 2);
+  }
+}
+@media screen and (min-width: 1281px) {
+  .gallery__item {
+    -ms-flex-preferred-size: calc((100% - 32px) / 3);
+        flex-basis: calc((100% - 32px) / 3);
+  }
+}
+
+.gallery__item {
+  min-width: 280px;
+  height: 443px;
+  -webkit-transition: -webkit-transform var(--animation-duration) var(--timing-function);
+  transition: -webkit-transform var(--animation-duration) var(--timing-function);
+  transition: transform var(--animation-duration) var(--timing-function);
+  transition: transform var(--animation-duration) var(--timing-function), -webkit-transform var(--animation-duration) var(--timing-function);
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+@media screen and (min-width: 768px) {
+  .gallery__item {
+    width: 336px;
+    height: 494px;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1281px) {
+  .gallery__item {
+    width: 395px;
+    height: 634px;
+  }
+}
+
+.gallery__item:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+}
+
+.block__image {
+  min-width: 280px;
+  height: 402px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .block__image {
+    width: 336px;
+    height: 455px;
+    margin-bottom: 8px;
+  }
+}
+@media screen and (min-width: 768px) and (min-width: 1281px) {
+  .block__image {
+    width: 395px;
+    height: 574px;
+    margin-bottom: 12px;
+  }
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.name_movie {
+  color: var(--color-font);
+  font-size: 12px;
+  line-height: 1.17;
+}
+@media screen and (min-width: 768px) {
+  .name_movie {
+    line-height: 1.33;
+  }
+}
+@media screen and (min-width: 1281px) {
+  .name_movie {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.genre_movie {
+  color: var(--color-button);
+  font-size: 12px;
+  line-height: 1.17;
+}
+@media screen and (min-width: 768px) {
+  .genre_movie {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+}
+@media screen and (min-width: 1281px) {
+  .genre_movie {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.info_movie {
+  padding-left: 2px;
+}/*# sourceMappingURL=index.min.css.map */
