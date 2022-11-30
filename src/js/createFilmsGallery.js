@@ -6,7 +6,7 @@ import { genres } from './genres';
 import { Spinner } from 'spin.js';
 
 const searchFormEl = document.querySelector('.js-search-form');
-const galleryEl = document.querySelector('.gallery');
+const galleryEl = document.querySelector('.js-gallery-home');
 // const loadMoreBtn = document.querySelector('.load-more');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
@@ -67,7 +67,7 @@ const onSearchFormSubmit = async event => {
     Notiflix.Notify.success(`Found ${response.data.total_results} films.`);
 
     response.data.results.forEach(movie => {
-      movie.release_date = '|  ' + movie.release_date.slice(0, 4);
+      movie.release_date = ' | ' + movie.release_date.slice(0, 4);
       movie.original_title = movie.original_title.toUpperCase();
 
       const newArr = [];
