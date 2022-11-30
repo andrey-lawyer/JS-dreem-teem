@@ -2,12 +2,21 @@
   padding-top: 40px;
   padding-bottom: 60px;
   max-width: 1280px;
-  background-color: grey;
+  //   background-color: grey;
   background-size: cover;
   background-position: center;
   //
 }
-.header-container__img {
+// .header-container__img {
+//   background-image: linear-gradient(
+//       to right,
+//       rgba(0, 0, 0, 0.56),
+//       rgba(0, 0, 0, 0.56)
+//     ),
+//     url('../images/header.jpg');
+// }
+.header-library {
+  background-color: var(--color-font-secondary);
   background-image: linear-gradient(
       to right,
       rgba(0, 0, 0, 0.56),
