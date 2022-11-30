@@ -1,0 +1,115 @@
+.header-container{
+    padding-top: 40px;
+    padding-bottom: 62px;
+    max-width: 1280px;
+    // text-align: center;
+    background-color: grey;
+    background-size: cover;
+    background-position: center;
+
+    background-image: linear-gradient(to right,
+            rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.56)),
+        url('../images/header.jpg');
+
+}
+.logo{
+    text-decoration: none;
+}
+.logo__img{
+    display: inline-block;
+    margin-right: 12px;
+}
+.logo__title{
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    color: #FFFFFF;
+    text-decoration: none;
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 62px;
+}
+
+.header-nav__list{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.header-lib__list{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.header-nav__logo{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(14/12);
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+.header-nav__link{
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(14/12);
+    text-align: center;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 58px;
+        width: 100%;
+        height: 3px;
+        // border-radius: 4px;
+        background-color: #FF001B;
+        bottom: 0;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+    }
+    
+    &:hover::before,
+    &:focus::before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+}
+
+.btn{
+    padding: 14px 36px 12px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    &:hover,
+    &:focus{
+        color: white;
+        background: #FF6B01;
+        border: 1px solid #FF6B01;
+        box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    }
+}
