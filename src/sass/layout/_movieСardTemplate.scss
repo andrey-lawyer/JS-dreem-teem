@@ -1,17 +1,16 @@
 .gallery__item {
   min-width: 280px;
-  height: 443px;
+  // height: 443px;
   transition: transform var(--animation-duration) var(--timing-function);
-  // position: relative;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    height: 494px;
+    // height: 494px;
     @media screen and (min-width: 1281px) {
       width: 395px;
-      height: 634px;
+      // max-height: 634px;
     }
   }
 }
@@ -70,5 +69,6 @@
 }
 // Это для карасоты
 .info_movie {
-  padding-left: 2px;
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
