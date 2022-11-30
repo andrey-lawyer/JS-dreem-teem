@@ -1,0 +1,18 @@
+.header__logo-svg {
+  fill: var(--color-background-modal);
+  color: var(--color-background-modal);
+  height: 24px;
+  width: 24px;
+}
+header {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 45px 20px;
+  height: 230px;
+
+  font-weight: 500;
+  color: var(--color-background-modal);
+
+  background-color: var(--color-font-secondary);
+}
