@@ -20,8 +20,8 @@ const opts = {
   radius: 45, // The radius of the inner circle
   scale: 1, // Scales overall size of the spinner
   corners: 1, // Corner roundness (0..1)
-  speed: 0.6, // Rounds per second
-  rotate: 0, // The rotation offset
+  speed: 1, // Rounds per second
+  rotate: 1, // The rotation offset
   animation: 'spinner-line-fade-more', // The CSS animation name for the lines
   direction: 1, // 1: clockwise, -1: counterclockwise
   color: '#ff6b01', // CSS color or array of colors
