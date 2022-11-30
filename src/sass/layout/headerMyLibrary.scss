@@ -1,36 +1,31 @@
 .header-container {
   padding-top: 40px;
   padding-bottom: 60px;
-  max-width: 1280px;
-  //   background-color: grey;
-  background-size: cover;
-  background-position: center;
-  //
+  max-width: 1280px; 
 }
-// .header-container__img {
-//   background-image: linear-gradient(
-//       to right,
-//       rgba(0, 0, 0, 0.56),
-//       rgba(0, 0, 0, 0.56)
-//     ),
-//     url('../images/header.jpg');
-// }
+
 .header-library {
   background-color: var(--color-font-secondary);
-  background-image: linear-gradient(
-      to right,
+  background-image: linear-gradient(to right,
       rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ),
+      rgba(0, 0, 0, 0.56)),
     url('../images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 .logo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
   text-decoration: none;
 }
+
 .logo__img {
-  display: inline-block;
-  margin-right: 12px;
+  display: block;
 }
+
 .logo__title {
   font-weight: 500;
   font-size: 30px;
@@ -39,15 +34,18 @@
 
   color: #ffffff;
   text-decoration: none;
+
   @media screen and (max-width: 767px) {
     display: none;
   }
 }
+
 .header-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 62px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
@@ -57,12 +55,6 @@
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  @media screen and (min-width: 768px) {
-    gap: 32px;
-  }
-  @media screen and (min-width: 1280px) {
-    gap: 16px;
-  }
 }
 
 .header-lib__list {
@@ -83,6 +75,7 @@
   text-transform: uppercase;
 
   color: #ffffff;
+
   &::before {
     content: '';
     position: absolute;
@@ -118,6 +111,7 @@
   text-align: center;
   text-transform: uppercase;
   color: #ffffff;
+
   &:hover,
   &:focus {
     color: white;
@@ -125,10 +119,12 @@
     border: 1px solid #ff6b01;
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   }
+
   @media screen and (min-width: 768px) {
     width: 152px;
     height: 44px;
   }
+
   @media screen and (min-width: 1280px) {
     width: 148px;
     height: 42px;
