@@ -1,6 +1,7 @@
 'use strict';
 
 import axios from 'axios';
+import { Spinner } from 'spin.js';
 
 export class FilmSearch {
   #URL = 'https://api.themoviedb.org/3/search/movie';
