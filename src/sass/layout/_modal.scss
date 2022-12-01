@@ -1,9 +1,23 @@
 .modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: transparent;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.644);
+  z-index: 10;
+  overflow-y: scroll;
+}
+
+.modal__backdrop.is-hidden {
+  display: none;
+  pointer-events: none;
 }
 .modal__container {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   padding: 48px 20px 40px 20px;
   max-width: 280px;
