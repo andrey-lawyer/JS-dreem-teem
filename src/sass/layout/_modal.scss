@@ -30,13 +30,14 @@
 
   @include media('tablet') {
     display: flex;
-
+    width: 704px;
     max-width: 704px;
-    padding: 40px 72px 40px 36px;
+    // padding: 40px 72px 40px 36px;
   }
 
   @include media('desktop') {
-    max-width: 806px;
+    min-width: 806px;
+    // max-width: 806px;
     padding: 40px 12px 40px 12px;
   }
 }
@@ -198,4 +199,8 @@
     margin-left: 8px;
     margin-right: 7px;
   }
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }

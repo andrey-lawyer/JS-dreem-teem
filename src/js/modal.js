@@ -1,5 +1,4 @@
 const refs = {
-  // openModalBtn: document.querySelector('.btn-open'),
   closeModalBtn: document.querySelector('.modal__btn-close'),
   modal: document.querySelector('.modal__container'),
   body: document.body,
@@ -17,12 +16,14 @@ function toggleModal(event) {
     return;
   }
   refs.backdropEl.classList.remove('is-hidden');
+  refs.body.classList.add('overflow-hidden');
   document.addEventListener('keydown', onEscDown);
 }
 
 function modalClose(event) {
   refs.backdropEl.classList.add('is-hidden');
   document.removeEventListener('keydown', onEscDown);
+  refs.body.classList.remove('overflow-hidden');
 }
 
 document.addEventListener('keydown', onEscDown);
