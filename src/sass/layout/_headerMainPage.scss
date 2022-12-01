@@ -9,41 +9,42 @@
   // color: var(--color-background-modal);
 
   background-color: var(--color-font-secondary);
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ),
-    url(/src/images/header-home/background-home-tel-1x.jpg);
+  background-image:
+    url(/src/images/header-home/background-home-tel-1x.png);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   @include retina {
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
-      url(/src/images/header-home/background-home-tel-2x.jpg);
+    background-image:
+      url(/src/images/header-home/background-home-tel-2x.png);
   }
   @include mq(tab-only) {
-    background-image: url(/src/images/header-home/background-home-tab-1x.jpg);
+    background-image: url(/src/images/header-home/background-home-tab-1x.png);
     @include retina {
-      background-image: url(/src/images/header-home/background-home-tab-2x.jpg);
+      background-image: url(/src/images/header-home/background-home-tab-2x.png);
     }
   }
 
   @include mq(desk) {
-    background-image: url(/src/images/header-home/background-home-desk-1x.jpg);
+    background-image: url(/src/images/header-home/background-home-desk-1x.png);
     @include retina {
-      background-image: url(/src/images/header-home/background-home-desk-2x.jpg);
+      background-image: url(/src/images/header-home/background-home-desk-2x.png);
     }
   }
 }
 .header-container__main {
   padding-top: 40px;
-  padding-bottom: 80px;
+  padding-bottom: 92px;
   max-width: 1280px;
+  @include mq(tab) {
+      padding-bottom: 80px;
+    }
+}
+.header-nav__main{
+  margin-bottom: 54px;
+  @media screen and (min-width: 768px) {
+      margin-bottom: 40px;
+    }
 }
 .header__wrap {
   display: flex;
