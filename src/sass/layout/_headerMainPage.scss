@@ -40,7 +40,11 @@
     }
   }
 }
-
+.header-container__main {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  max-width: 1280px;
+}
 .header__wrap {
   display: flex;
 }
