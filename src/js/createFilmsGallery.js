@@ -98,40 +98,42 @@ const onSearchFormSubmit = async event => {
   }
   spinner.stop();
 };
-const onLoadMoreBtnClick = async event => {
-  const spinner = new Spinner(opts).spin(); // spinner
-  galleryEl.prepend(spinner.el); //spinner
 
-  if (!filmSearch.isNextDataExist()) {
-    // loadMoreBtn.classList.add('is-hidden');
-    Notiflix.Notify.failure('sorry, the end of search results reached.');
-    return;
-  }
-  filmSearch.page += 1;
+// =========================load more===================
+// const onLoadMoreBtnClick = async event => {
+//   const spinner = new Spinner(opts).spin(); // spinner
+//   galleryEl.prepend(spinner.el); //spinner
 
-  try {
-    const response = await filmSearch.fetchFilmsByQuery();
-    filmSearch.total_results = response.data.total_results;
+//   if (!filmSearch.isNextDataExist()) {
+//     // loadMoreBtn.classList.add('is-hidden');
+//     Notiflix.Notify.failure('sorry, the end of search results reached.');
+//     return;
+//   }
+//   filmSearch.page += 1;
 
-    galleryEl.insertAdjacentHTML(
-      'beforeend',
-      createCards(response.data.results)
-    );
-    //   !!!!!!
-  } catch (error) {
-    console.log(error);
-  }
-  spinner.stop();
-  //   scroll
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
+//   try {
+//     const response = await filmSearch.fetchFilmsByQuery();
+//     filmSearch.total_results = response.data.total_results;
 
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-};
+//     galleryEl.insertAdjacentHTML(
+//       'beforeend',
+//       createCards(response.data.results)
+//     );
+//     //   !!!!!!
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   spinner.stop();
+//   //   scroll
+//   const { height: cardHeight } = document
+//     .querySelector('.gallery')
+//     .firstElementChild.getBoundingClientRect();
+
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
+// };
 
 searchFormEl.addEventListener('submit', onSearchFormSubmit);
 // loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
@@ -187,6 +189,7 @@ const loadTrendingMovies = async event => {
   } catch (error) {
     console.log(error);
   }
+  spinner.stop();
 };
 
 loadTrendingMovies();
