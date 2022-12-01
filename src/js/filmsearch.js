@@ -20,9 +20,9 @@ export class FilmSearch {
       //   per_page: this.per_page,
       api_key: this.#API_KEY,
       query: this.query,
-   
+      include_adult: false,
     });
-    return axios.get(`${this.#URL}/?${searchParams}`);
+    return axios.get(`${this.#URL}?${searchParams}`);
   }
 
   isNextDataExist() {
