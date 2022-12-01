@@ -7,7 +7,6 @@ const refs = {
 };
 
 refs.galleryEl.addEventListener('click', toggleModal);
-
 refs.closeModalBtn.addEventListener('click', modalClose);
 
 function toggleModal(event) {
@@ -20,12 +19,20 @@ function toggleModal(event) {
   document.addEventListener('keydown', onEscDown);
   document.addEventListener('click', closeOnBackdropClick);
 }
+// правки Андрей
+const buttonWathedModal = document.querySelector('.js-Wathed');
+const buttonQueueModal = document.querySelector('.js-Queuee');
+// правки Андрей
 
 function modalClose(event) {
   refs.backdropEl.classList.add('is-hidden');
   document.removeEventListener('keydown', onEscDown);
   refs.body.classList.remove('overflow-hidden');
   removeEventListener('click', closeOnBackdropClick);
+  // правки Андрей
+  buttonWathedModal.disabled = false;
+  buttonQueueModal.disabled = false;
+  // правки Андрей
 }
 
 document.addEventListener('keydown', onEscDown);
