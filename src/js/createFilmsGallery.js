@@ -10,7 +10,7 @@ const galleryEl = document.querySelector('.js-gallery-home');
 // const loadMoreBtn = document.querySelector('.load-more');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
-const inputEl = document.querySelector('#search__input');
+// const inputEl = document.querySelector('#search__input');
 
 // =====================Spinner============================
 const opts = {

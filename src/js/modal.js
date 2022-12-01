@@ -18,18 +18,25 @@ function toggleModal(event) {
   refs.backdropEl.classList.remove('is-hidden');
   refs.body.classList.add('overflow-hidden');
   document.addEventListener('keydown', onEscDown);
+  document.addEventListener('click', closeOnBackdropClick);
 }
 
 function modalClose(event) {
   refs.backdropEl.classList.add('is-hidden');
   document.removeEventListener('keydown', onEscDown);
   refs.body.classList.remove('overflow-hidden');
+  removeEventListener('click', closeOnBackdropClick);
 }
 
 document.addEventListener('keydown', onEscDown);
 function onEscDown(event) {
   if (event.code === 'Escape') {
     modalClose();
-    console.log(event.code);
+  }
+}
+
+function closeOnBackdropClick(event) {
+  if (event.target === refs.backdropEl) {
+    modalClose();
   }
 }
