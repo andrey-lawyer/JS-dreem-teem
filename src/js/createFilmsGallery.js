@@ -15,6 +15,7 @@ const filmSearch = new FilmSearch();
 const trending = new Trending();
 const getFullMovieInfo = new GetFullMovieInfo();
 const inputEl = document.querySelector('#search__input');
+// const inputEl = document.querySelector('#search__input');
 
 // =====================Spinner============================
 const opts = {
