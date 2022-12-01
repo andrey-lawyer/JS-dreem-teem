@@ -1,6 +1,7 @@
 'use strict';
 
 import axios from 'axios';
+import { Spinner } from 'spin.js';
 
 export class FilmSearch {
   #URL = 'https://api.themoviedb.org/3/search/movie';
@@ -19,7 +20,7 @@ export class FilmSearch {
       //   per_page: this.per_page,
       api_key: this.#API_KEY,
       query: this.query,
-      include_adult: false,
+   
     });
     return axios.get(`${this.#URL}/?${searchParams}`);
   }

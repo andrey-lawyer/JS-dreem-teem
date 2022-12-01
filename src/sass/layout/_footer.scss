@@ -1,0 +1,32 @@
+.page-footer {
+  background-color: var(--color-background-footer);
+  color: var(--color-font-secondary);
+  display: flex;
+  justify-content: center;
+  padding-top: 29px;
+  padding-bottom: 29px;
+
+  font-size: 16px;
+  line-height: 1.19;
+}
+
+.footer__icon {
+  width: 14px;
+  height: 14px;
+  margin-top: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer__icon:focus,
+.footer__icon:hover {
+  transform: scale(1.2);
+}
+.footer__link-students {
+  margin-left: 5px;
+  color: var(--color-font-secondary);
+}
