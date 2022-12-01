@@ -1,16 +1,16 @@
 {{#each this}}
 
-  <li class='gallery__item'>
+  <li class='gallery__item' data-id={{id}}>
     <div class='block__image'>
       <img
         class='gallery__image'
         src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-        alt='{{original_title}}'
+        alt='{{title}}'
         loading='lazy'
       />
     </div>
     <div class='info_movie'>
-      <h2 class='name_movie'>{{original_title}}      
+      <h2 class='name_movie'>{{title}}
       </h2>
       <p class='genre_movie'>{{genre_ids}}{{release_date}}</p>
       {{!-- <p class='genre_movie'>{{release_date}}</p> --}}
