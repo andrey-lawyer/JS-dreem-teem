@@ -43,5 +43,4 @@ function onclickWathed() {
   console.log(refs.imgModal.src);
   localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(arrayWathed));
   //   localStorage.removeItem(STORAGE_KEY);
-  // 1
 }
