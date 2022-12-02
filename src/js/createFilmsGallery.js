@@ -1,15 +1,20 @@
 import Notiflix from 'notiflix';
 import { FilmSearch } from './filmsearch';
 import createCards from '../templates/filmcard.hbs';
+import createMovieInfoModal from '../templates/modal.hbs';
 import { Trending } from './trending';
 import { genres } from './genres';
 import { Spinner } from 'spin.js';
+import { GetFullMovieInfo } from './getFullMovieInfo';
 
 const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.js-gallery-home');
+const movieInfoModalEl = document.querySelector('.js-movie-info');
 // const loadMoreBtn = document.querySelector('.load-more');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
+const getFullMovieInfo = new GetFullMovieInfo();
+const inputEl = document.querySelector('#search__input');
 // const inputEl = document.querySelector('#search__input');
 
 // =====================Spinner============================
@@ -70,8 +75,8 @@ const onSearchFormSubmit = async event => {
       if (movie.release_date) {
         movie.release_date = '|  ' + movie.release_date.slice(0, 4);
       }
-      if (movie.original_title) {
-        movie.original_title = movie.original_title.toUpperCase();
+      if (movie.title) {
+        movie.title = movie.title.toUpperCase();
       }
       if (!movie.poster_path) {
         movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
@@ -161,8 +166,8 @@ const loadTrendingMovies = async event => {
       if (movie.release_date) {
         movie.release_date = '|  ' + movie.release_date.slice(0, 4);
       }
-      if (movie.original_title) {
-        movie.original_title = movie.original_title.toUpperCase();
+      if (movie.title) {
+        movie.title = movie.title.toUpperCase();
       }
       if (!movie.poster_path) {
         movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
@@ -193,3 +198,49 @@ const loadTrendingMovies = async event => {
 };
 
 loadTrendingMovies();
+
+// ================================Full movie info card modal=========================
+const onFilmCardClick = async event => {
+  event.preventDefault();
+
+  const spinner = new Spinner(opts).spin();
+  galleryEl.prepend(spinner.el);
+
+  if (event.target.nodeName === 'UL') {
+    console.log('miss');
+    return;
+  }
+  getFullMovieInfo.id = event.target.closest('li').dataset.id;
+
+  console.log(getFullMovieInfo.id);
+
+  try {
+    const response = await getFullMovieInfo.fetchFilmsByID();
+
+    if (response.data.title) {
+      response.data.title = response.data.title.toUpperCase();
+    }
+
+    if (response.data.original_title) {
+      response.data.original_title = response.data.original_title.toUpperCase();
+    }
+
+    if (!response.data.poster_path) {
+      response.data.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+    }
+
+    const newArr = [];
+    response.data.genres.map(element => {
+      newArr.push(element.name);
+    });
+    response.data.genres = [...newArr];
+
+    movieInfoModalEl.innerHTML = createMovieInfoModal(response.data);
+    //   !!!!!!
+  } catch (error) {
+    Notiflix.Notify.failure(console.log(error));
+  }
+  spinner.stop();
+};
+
+galleryEl.addEventListener('click', onFilmCardClick);
