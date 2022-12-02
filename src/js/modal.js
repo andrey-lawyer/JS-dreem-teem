@@ -30,8 +30,8 @@ function modalClose(event) {
   refs.body.classList.remove('overflow-hidden');
   removeEventListener('click', closeOnBackdropClick);
   // правки Андрей
-  buttonWathedModal.disabled = false;
-  buttonQueueModal.disabled = false;
+  // buttonWathedModal.disabled = false;
+  // buttonQueueModal.disabled = false;
   // правки Андрей
 }
 

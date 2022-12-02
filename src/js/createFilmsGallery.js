@@ -10,13 +10,18 @@ import { GetFullMovieInfo } from './getFullMovieInfo';
 const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.js-gallery-home');
 const movieInfoModalEl = document.querySelector('.js-movie-info');
+const jsContainer = document.querySelector('.js-container-movie');
 // const loadMoreBtn = document.querySelector('.load-more');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
 const getFullMovieInfo = new GetFullMovieInfo();
 const inputEl = document.querySelector('#search__input');
 // const inputEl = document.querySelector('#search__input');
+//
+const buttonWathedModal = document.querySelector('.js-Wathed');
+const buttonQueueModal = document.querySelector('.js-Queuee');
 
+//
 // =====================Spinner============================
 const opts = {
   lines: 13, // The number of lines to draw
@@ -145,16 +150,6 @@ searchFormEl.addEventListener('submit', onSearchFormSubmit);
 
 // ===========================trending====================
 const loadTrendingMovies = async event => {
-  // if (!trending.isNextDataExist()) {
-  //   loadMoreBtn.classList.add('is-hidden');
-  //   Notiflix.Notify.failure(
-  //     "sorry, the end of search results reached."
-  //   );
-  //   return;
-  // }
-
-  // trending.page += 1;
-
   const spinner = new Spinner(opts).spin();
   galleryEl.prepend(spinner.el);
 
@@ -201,7 +196,7 @@ loadTrendingMovies();
 
 // ================================Full movie info card modal=========================
 const onFilmCardClick = async event => {
-  event.preventDefault();
+  // event.preventDefault();
 
   const spinner = new Spinner(opts).spin();
   galleryEl.prepend(spinner.el);
@@ -235,11 +230,12 @@ const onFilmCardClick = async event => {
     });
     response.data.genres = [...newArr];
 
-    movieInfoModalEl.innerHTML = createMovieInfoModal(response.data);
-    //   !!!!!!
+    jsContainer.innerHTML = createMovieInfoModal(response.data);
+    // movieInfoModalEl.innerHTML = createMovieInfoModal(response.data);
   } catch (error) {
     Notiflix.Notify.failure(console.log(error));
   }
+
   spinner.stop();
 };
 
