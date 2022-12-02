@@ -1,4 +1,4 @@
-// localStorage.clear();
+// // localStorage.clear();
 // const STORAGE_KEY_WATCHED = 'wathedlist-films';
 // const STORAGE_KEY_QUEUEE = 'queuee-films';
 
