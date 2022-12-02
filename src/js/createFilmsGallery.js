@@ -354,7 +354,7 @@ function addLocalStorageQueue(date) {
     genres = [genres[0], genres[1], 'Оther'];
   }
   genres = genres.join();
-  date = ' |  ' + release_date.slice(0, 4);
+  release_date = ' |  ' + release_date.slice(0, 4);
   const newObject = {
     genres,
     homepage,
