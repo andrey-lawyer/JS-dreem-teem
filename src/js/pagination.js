@@ -52,6 +52,15 @@ const options = {
 const pagination = new Pagination(container, options);
 
 pagination.on('afterMove', eventData => {
+
+if (searchInput.value === '') {
+  trending.page = eventData.page;
+  trending.fetchTrendingFilms().then(response => {
+    gallery.innerHTML = createCards(response.data.results)
+    return
+  })
+
+}
   filmSearch.page = eventData.page;
   filmSearch.query = searchInput.value;
   filmSearch.fetchFilmsByQuery().then(response => { 
@@ -59,6 +68,19 @@ pagination.on('afterMove', eventData => {
     gallery.innerHTML = createCards(response.data.results)
 
   } )
+
+
+  // filmSearch.page = eventData.page;
+  // filmSearch.query = searchInput.value;
+  // filmSearch.fetchFilmsByQuery().then(response => { 
+  //   console.log(response)
+  //   gallery.innerHTML = createCards(response.data.results)
+
+  // } )
+
+  
+
+
   // gallery.innerHTML = createCards(response.data.results);
 });
 
