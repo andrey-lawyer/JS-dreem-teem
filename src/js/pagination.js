@@ -7,15 +7,18 @@ import createCards from '../templates/filmcard.hbs';
 import { Trending } from './trending';
 import { genres } from './genres';
 import { Spinner } from 'spin.js';
+import { onSearchFormSubmit } from './createFilmsGallery';
+import { loadTrendingMovies } from './createFilmsGallery'
 
 import createCards from '../templates/filmcard.hbs';
 
 const gallery = document.querySelector('.gallery');
-const searchFormEl = document.querySelector('.js-search-form');
+const searchInput = document.querySelector('.search__input');
+const trending = new Trending();
 
 const filmSearch = new FilmSearch();
-const trending = new Trending();
-const response = filmSearch.fetchFilmsByQuery();
+
+// const response = filmSearch.fetchFilmsByQuery();
 
 const container = document.getElementById('pagination');
 const options = {
@@ -50,7 +53,7 @@ const pagination = new Pagination(container, options);
 
 pagination.on('afterMove', eventData => {
   filmSearch.page = eventData.page;
-  filmSearch.query = 'cat';
+  filmSearch.query = searchInput.value;
   filmSearch.fetchFilmsByQuery().then(response => { 
     console.log(response)
     gallery.innerHTML = createCards(response.data.results)
@@ -61,10 +64,5 @@ pagination.on('afterMove', eventData => {
 
 //додавання атрибуту 
 const paginationButtonLast = document.querySelector(".tui-last");
-const paginationImageLast = document.querySelector(".tui-ico-last");
 
-paginationButtonLast.classList. add("tui-is-disabled")
-paginationImageLast.classList.add("tui-is-disabled")
-// paginationButtonLast.setAttribute("hidden", true);
-
-
+paginationButtonLast.setAttribute("hidden", true);

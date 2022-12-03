@@ -45,7 +45,7 @@ const opts = {
 };
 
 // ====================Search Films========================
-const onSearchFormSubmit = async event => {
+export const onSearchFormSubmit = async event => {
   event.preventDefault();
 
   const spinner = new Spinner(opts).spin();
@@ -149,7 +149,7 @@ searchFormEl.addEventListener('submit', onSearchFormSubmit);
 // loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
 
 // ===========================trending====================
-const loadTrendingMovies = async event => {
+export const loadTrendingMovies = async event => {
   const spinner = new Spinner(opts).spin();
   galleryEl.prepend(spinner.el);
 
