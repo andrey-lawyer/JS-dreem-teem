@@ -16,54 +16,68 @@ const refs = {
 
   containerLibrary: document.querySelector('.js-gallery-library'),
 
-  buttonLoadMore: document.querySelector('.load-more'),
+  buttonLoadMoreWatched: document.querySelector('.watched'),
+  buttonLoadMoreQueue: document.querySelector('.queue'),
 };
 
 refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
-// console.log(refs.containerLibrary);
-// LOAD-MORE!!!!
-refs.buttonLoadMore.style.display = 'none';
 
-if (parsedateLocalWathed.length <= 6) {
-  refs.containerLibrary.innerHTML = createCards(parsedateLocalWathed);
-} else {
-  refs.containerLibrary.innerHTML = createCards(
-    parsedateLocalWathed.slice(0, 6)
-  );
-  refs.buttonLoadMore.style.display = 'block';
-}
+// LOAD-MORE!!!!!!!!!!!!!!!!!!!!!!
+
+refs.buttonLoadMoreWatched.style.display = 'none';
+refs.buttonLoadMoreQueue.style.display = 'none';
 
 let counterBegin = 0;
 let counterEnd = 0;
-function onClickLoadMore() {
+function CardsLoadmore(date, button) {
+  counterBegin = 0;
+  counterEnd = 0;
+  if (date.length <= 6) {
+    refs.containerLibrary.innerHTML = createCards(date);
+  } else {
+    refs.containerLibrary.innerHTML = createCards(date.slice(0, 6));
+    button.style.display = 'block';
+  }
+}
+CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
+
+function onClickLoadMore(date, buttons) {
   counterBegin += 6;
   counterEnd += 12;
-  if (parsedateLocalWathed.length <= counterBegin) {
-    refs.buttonLoadMore.style.display = 'none';
-    Notiflix.Notify.failure(
-      'Sorry, there are no images matching your search query'
-    );
+  if (date.length <= counterBegin) {
+    buttons.style.display = 'none';
+    // refs.buttonLoadMore.removeEventListener('click', onClickLoadMore);
+    Notiflix.Notify.failure('Sorry, no more movies here');
   } else {
     refs.containerLibrary.insertAdjacentHTML(
       'beforeend',
-      createCards(parsedateLocalWathed.slice(counterBegin, counterEnd))
+      createCards(date.slice(counterBegin, counterEnd))
     );
   }
 }
+//
+refs.buttonLoadMoreWatched.addEventListener('click', () =>
+  onClickLoadMore(parsedateLocalWathed, refs.buttonLoadMoreWatched)
+);
 
-refs.buttonLoadMore.addEventListener('click', onClickLoadMore);
+refs.buttonLoadMoreQueue.addEventListener('click', () =>
+  onClickLoadMore(parsedateLocalQueuee, refs.buttonLoadMoreQueue)
+);
 
-// LOAD-MORE!!!!
-
+// LOAD-MORE!!!!!!!!!!!!!!!!!!!
 const onShowQueue = () => {
-  refs.containerLibrary.innerHTML = createCards(parsedateLocalQueuee);
+  refs.buttonLoadMoreWatched.style.display = 'none';
+  // refs.containerLibrary.innerHTML = createCards(parsedateLocalQueuee);
+  CardsLoadmore(parsedateLocalQueuee, refs.buttonLoadMoreQueue);
   refs.buttonLibraryWatched.style.backgroundColor = 'transparent';
   refs.buttonLibraryQueue.style.backgroundColor = '#ff6b01';
 };
+
 refs.buttonLibraryQueue.addEventListener('click', onShowQueue);
 
 const onShowWatched = () => {
-  refs.containerLibrary.innerHTML = createCards(parsedateLocalWathed);
+  refs.buttonLoadMoreQueue.style.display = 'none';
+  CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
   refs.buttonLibraryQueue.style.backgroundColor = 'transparent';
   refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
 };
