@@ -56,6 +56,30 @@ pagination.on('afterMove', eventData => {
 if (searchInput.value === '') {
   trending.page = eventData.page;
   trending.fetchTrendingFilms().then(response => {
+    response.data.results.forEach(movie => {
+      if (movie.release_date) {
+        movie.release_date = ' |  ' + movie.release_date.slice(0, 4);
+      }
+      if (movie.title) {
+        movie.title = movie.title.toUpperCase();
+      }
+      if (!movie.poster_path) {
+        movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+      }
+
+      const newArr = [];
+      movie.genre_ids.map((element, index, array) => {
+        genres.forEach(genre => {
+          if (genre.id == element) {
+            newArr.push(genre.name);
+          }
+        });
+      });
+      if (newArr.length > 2) {
+        newArr.splice(2, newArr.length - 2, 'Other');
+      }
+      movie.genre_ids = [...newArr];
+    });
     gallery.innerHTML = createCards(response.data.results)
     return
   })
@@ -64,6 +88,31 @@ if (searchInput.value === '') {
   filmSearch.page = eventData.page;
   filmSearch.query = searchInput.value;
   filmSearch.fetchFilmsByQuery().then(response => { 
+
+    response.data.results.forEach(movie => {
+      if (movie.release_date) {
+        movie.release_date = '|  ' + movie.release_date.slice(0, 4);
+      }
+      if (movie.title) {
+        movie.title = movie.title.toUpperCase();
+      }
+      if (!movie.poster_path) {
+        movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+      }
+
+      const newArr = [];
+      movie.genre_ids.map((element, index, array) => {
+        genres.forEach(genre => {
+          if (genre.id == element) {
+            newArr.push(genre.name);
+          }
+        });
+      });
+      if (newArr.length > 2) {
+        newArr.splice(2, newArr.length - 2, 'Other');
+      }
+      movie.genre_ids = [...newArr];
+    });
     console.log(response)
     gallery.innerHTML = createCards(response.data.results)
 
