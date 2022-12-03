@@ -18,6 +18,7 @@ function toggleModal(event) {
   refs.body.classList.add('overflow-hidden');
   document.addEventListener('keydown', onEscDown);
   document.addEventListener('click', closeOnBackdropClick);
+  refs.modal.addEventListener('click', onBtnClick);
 }
 // правки Андрей
 const buttonWathedModal = document.querySelector('.js-Wathed');
@@ -29,6 +30,8 @@ function modalClose(event) {
   document.removeEventListener('keydown', onEscDown);
   refs.body.classList.remove('overflow-hidden');
   removeEventListener('click', closeOnBackdropClick);
+  removeEventListener('click', onBtnClick);
+
   // правки Андрей
   // buttonWathedModal.disabled = false;
   // buttonQueueModal.disabled = false;
@@ -47,3 +50,18 @@ function closeOnBackdropClick(event) {
     modalClose();
   }
 }
+
+// логіка роботи з динамічно-розміченими кнопками..
+const onBtnClick = event => {
+  if (event.target.nodeName === 'path' || event.target.nodeName === 'svg') {
+    modalClose();
+  }
+
+  if (event.target.classList.contains('js-Wathed')) {
+    console.log(`Watched`);
+  }
+
+  if (event.target.classList.contains('js-Queuee')) {
+    console.log(`Queuee`);
+  }
+};

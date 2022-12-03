@@ -1,16 +1,21 @@
-
+    <button type="button" class="modal__btn-close" data-modal-close>
+      <svg class="modal__icon-close" data-btn="close">
+          <path d='M8 8L22 22' stroke='black' stroke-width='2'></path>
+          <path d='M8 22L22 8' stroke='black' stroke-width='2'></path>
+      </svg>
+    </button>
   <div class='image__container' width='240'>
   <img
     class='image js_image_modal'
     src='https://image.tmdb.org/t/p/w500{{poster_path}}'
     alt='{{original_title}}'
   />
-</div>
-<div class='movie__description'>
-  <h2 class='movie__name' data-id={{id}}>{{title}}</h2>
-  <div class='grid-container'>
-    <i class='movie__item-title'>Vote / Votes</i>
-    <div class='value'>
+  </div>
+  <div class='movie__description'>
+    <h2 class='movie__name' data-id={{id}}>{{title}}</h2>
+    <div class='grid-container'>
+      <i class='movie__item-title'>Vote / Votes</i>
+      <div class='value'>
       <span class='vote movie__vote-focus'>{{vote_average}}</span>
       /
       <span class='votes movie__votes-unactive'>{{vote_count}}</span>
@@ -26,3 +31,7 @@
   <article class='about__text'>
     {{overview}}
   </article>
+  <div class="btn__container">
+    <button class="modal__btn js-Wathed">add to Watched</button>
+    <button class="modal__btn js-Queuee">add to queue</button>
+  </div>
