@@ -33,14 +33,14 @@ const options = {
   template: {
     page: '<a href="#" class="pagination-button">{{page}}</a>',
     currentPage:
-      '<strong class="pagination-current-button current-page-pag pagination">{{page}}</strong>',
+      '<strong id="pagination-current" class="pagination-current-button current-page-pag pagination">{{page}}</strong>',
     moveButton:
       '<a href="#" id="next" class="pagination-button tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span id="pugination-more-arrow" class="pagination-arrow tui-ico-{{type}}">{{type}}</span>' +
       '</a>',
     disabledMoveButton:
       '<span id="back" class="pagination-button tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span id="pagination-first"  class="tui-ico-{{type}}">{{type}}</span>' +
       '</span>',
     moreButton:
       '<a href="#"  id="more" class="pagination-button tui-{{type}}-is-ellip ">' +
@@ -81,6 +81,8 @@ if (searchInput.value === '') {
       movie.genre_ids = [...newArr];
     });
     gallery.innerHTML = createCards(response.data.results)
+
+    window.scrollTo(0,0)
     return
   })
 
@@ -113,9 +115,9 @@ if (searchInput.value === '') {
       }
       movie.genre_ids = [...newArr];
     });
-    console.log(response)
-    gallery.innerHTML = createCards(response.data.results)
 
+    gallery.innerHTML = createCards(response.data.results)
+    window.scrollTo(0,0)
   } )
 
 
@@ -134,6 +136,5 @@ if (searchInput.value === '') {
 });
 
 //додавання атрибуту 
-const paginationButtonLast = document.querySelector(".tui-last");
-
-paginationButtonLast.setAttribute("hidden", true);
+// const paginationButtonLast = document.querySelector(".tui-last");
+// const paginationArrowLast = document.querySelector(".tui-ico-last");

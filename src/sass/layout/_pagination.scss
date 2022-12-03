@@ -1,0 +1,127 @@
+.pagination-button {
+    margin-left: 3px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+  
+    width: 40px;
+    height: 40px;
+    padding: 13px;
+    color: var(--color-font);
+    background-color: transparent;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.7;
+    border-radius: 5px;
+    
+    text-decoration: none;
+  
+  }
+  
+  .pagination-button:hover {
+    color: var(--color-background-modal);
+    background-color: var(--color-button);
+  }
+  
+  #pagination-current.pagination-current-button.current-page-pag  {
+  
+    margin-left: 3px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+  
+    width: 40px;
+    height: 40px;
+    padding: 13px;
+    color: var(--color-background-modal);
+    background-color: var(--color-button);
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.7;
+    border-radius: 5px;
+    border: none;
+    
+    text-decoration: none;
+  }
+  .pagination-current-button:hover {
+    color: var(--color-background-modal);
+    background-color: var(--color-button);
+  }
+  
+  #next {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+  
+    border: 0;
+    width: 40px;
+    height: 40px;
+    padding: 13px;
+  
+    color: var(--color-font);
+  }
+  #back {
+    border: none;
+    width: 40px;
+    height: 40px;
+    padding: 13px;
+  
+    color: var(--color-font);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.7;
+    border-radius: 5px;
+    border: none;
+    
+    text-decoration: none;
+  }
+  #more {
+    border: none;
+    width: 40px;
+    height: 40px;
+    padding: 13px;
+  
+    color: var(--color-font);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.7;
+    border-radius: 5px;
+    border: none;
+    
+    text-decoration: none;
+  }
+
+//Налаштування стрілочок  
+  #pugination-more-arrow.tui-ico-next {
+    background-image: url(//src/images/icons.svg#icon-heart);
+  }
+  
+  a#next.pagination-button.tui-next {
+    background-size: contain;
+    background-color: var(--color-background-footer);
+    background-image: url(/src/images/arrrow-right.png);
+  }
+  #pugination-more-arrow.tui-ico-prev {
+    background-image: url(//src/images/icons.svg#icon-heart);
+  }
+  a#next.pagination-button.tui-prev {
+    background-size: contain;
+    background-color: var(--color-background-footer);
+    background-image: url(/src/images/arrrow-left.png);
+  }
+span#pagination-first.tui-ico-prev {
+    background-image: url(//src/images/icons.svg#icon-heart);
+}
+
+//Виключення відображення крайніх стілочок
+  a#next.pagination-button.tui-last {
+    display: none;
+  }
+  span#back.pagination-button.tui-first {
+    display: none;
+  }
+  a#next.pagination-button.tui-first {
+    display: none;
+  }
