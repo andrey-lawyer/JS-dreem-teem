@@ -116,7 +116,7 @@ export const onSearchFormSubmit = async event => {
 //   const spinner = new Spinner(opts).spin(); // spinner
 //   galleryEl.prepend(spinner.el); //spinner
 
-//   if (!filmSearch.isNextDataExist()) {
+//   if (filmSearch.isEnd()) {
 //     // loadMoreBtn.classList.add('is-hidden');
 //     Notiflix.Notify.failure('sorry, the end of search results reached.');
 //     return;
