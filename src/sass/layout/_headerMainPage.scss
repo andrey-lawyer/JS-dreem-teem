@@ -253,3 +253,11 @@
   text-decoration: none;
   
 }
+//=============================================
+
+.acount-nav{
+  color: white;
+  &:hover{
+    color:teal;
+  }
+}
