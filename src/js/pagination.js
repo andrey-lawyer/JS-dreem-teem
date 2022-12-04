@@ -1,51 +1,70 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import Notiflix from 'notiflix';
+import { FilmSearch } from './filmsearch';
+import createCards from '../templates/filmcard.hbs';
+import { Trending } from './trending';
+import { genres } from './genres';
+import { Spinner } from 'spin.js';
 
 import createCards from '../templates/filmcard.hbs';
 
+const gallery = document.querySelector('.gallery');
+const searchFormEl = document.querySelector('.js-search-form');
 
- const gallery = document.querySelector('.gallery');
- 
+const filmSearch = new FilmSearch();
+const trending = new Trending();
+const response = filmSearch.fetchFilmsByQuery();
 
 const container = document.getElementById('pagination');
-const options = { // below default value of options
-     totalItems: 500,
-     itemsPerPage: 20,
-     visiblePages: 10,
-     page: 1,
-     centerAlign: true,
-     firstItemClassName: 'tui-first-child',
-     lastItemClassName: 'tui-last-child',
-    //  template: {
-    //      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    //      currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    //      moveButton:
-    //          '<a href="#" class="tui-page-btn tui-{{type}}">' +
-    //              '<span class="tui-ico-{{type}}">{{type}}</span>' +
-    //          '</a>',
-    //      disabledMoveButton:
-    //          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-    //              '<span class="tui-ico-{{type}}">{{type}}</span>' +
-    //          '</span>',
-    //      moreButton:
-    //          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-    //              '<span class="tui-ico-ellip">...</span>' +
-    //          '</a>'
-    //  }
+const options = {
+  // below default value of options
+  totalItems: 10000,
+  itemsPerPage: 20,
+  visiblePages: 5,
+  page: 1,
+  centerAlign: true,
+  firstItemClassName: 'pagination-first-child',
+  lastItemClassName: 'pagination-last-child',
+  template: {
+    page: '<a href="#" class="pagination-button">{{page}}</a>',
+    currentPage:
+      '<strong class="pagination-current-button current-page-pag pagination">{{page}}</strong>',
+    moveButton:
+      '<a href="#" id="next" class="pagination-button tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span id="back" class="pagination-button tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#"  id="more" class="pagination-button tui-{{type}}-is-ellip ">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
 };
+
 const pagination = new Pagination(container, options);
 
-pagination.on('beforeMove', eventData => {
-    options.page = eventData.page;
+pagination.on('afterMove', eventData => {
+  filmSearch.page = eventData.page;
+  filmSearch.query = 'cat';
+  filmSearch.fetchFilmsByQuery().then(response => { 
+    console.log(response)
+    gallery.innerHTML = createCards(response.data.results)
 
-
-    }
-  );
-  
-
-  
-  pagination.on('afterMove', (event) => {
-    const currentPage = event.page;
-    console.log(currentPage);
+  } )
+  // gallery.innerHTML = createCards(response.data.results);
 });
+
+//додавання атрибуту 
+const paginationButtonLast = document.querySelector(".tui-last");
+const paginationImageLast = document.querySelector(".tui-ico-last");
+
+paginationButtonLast.classList. add("tui-is-disabled")
+paginationImageLast.classList.add("tui-is-disabled")
+// paginationButtonLast.setAttribute("hidden", true);
+
+

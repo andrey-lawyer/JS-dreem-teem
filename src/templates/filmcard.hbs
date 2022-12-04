@@ -1,56 +1,16 @@
 {{#each this}}
 
-  {{!-- <div
-    class='photo-card'
-    data-url='https:'
-    image.tmdb.org
-    t
-    p
-    w500
-    {{poster_path}}
-  >
-    <img
-      class='img-item'
-      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-      alt='{{original_title}}'
-      loading='lazy'
-    />
-
-    <div class='info'>
-      <p class='info-item'>
-        <b>release
-          <br />
-          {{release_date}}</b>
-      </p>
-      <p class='info-item'>
-        <b>title
-          <br />
-          {{original_title}}</b>
-      </p>
-      <p class='info-item'>
-        <b>popularity
-          <br />
-          {{popularity}}</b>
-      </p>
-      <p class='info-item'>
-        <b>vote
-          <br />
-          {{vote_count}}</b>
-      </p>
-    </div>
-  </div> --}}
-
-  <li class='gallery__item'>
+  <li class='gallery__item' data-id={{id}}>
     <div class='block__image'>
       <img
         class='gallery__image'
         src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-        alt='{{original_title}}'
+        alt='{{title}}'
         loading='lazy'
       />
     </div>
     <div class='info_movie'>
-      <h2 class='name_movie'>{{original_title}}      
+      <h2 class='name_movie'>{{title}}
       </h2>
       <p class='genre_movie'>{{genre_ids}}{{release_date}}</p>
       {{!-- <p class='genre_movie'>{{release_date}}</p> --}}
