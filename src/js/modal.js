@@ -20,8 +20,8 @@ function toggleModal(event) {
   document.addEventListener('click', closeOnBackdropClick);
 }
 // правки Андрей
-const buttonWathedModal = document.querySelector('.js-Wathed');
-const buttonQueueModal = document.querySelector('.js-Queuee');
+// const buttonWathedModal = document.querySelector('.js-Wathed');
+// const buttonQueueModal = document.querySelector('.js-Queuee');
 // правки Андрей
 
 function modalClose(event) {
@@ -44,6 +44,14 @@ function onEscDown(event) {
 
 function closeOnBackdropClick(event) {
   if (event.target === refs.backdropEl) {
+    modalClose();
+  }
+}
+
+// Sasha
+refs.modal.addEventListener('click', closeOnClick);
+function closeOnClick(event) {
+  if (event.target.nodeName === 'path' || event.target.nodeName === 'svg') {
     modalClose();
   }
 }
