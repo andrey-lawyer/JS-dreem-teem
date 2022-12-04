@@ -28,4 +28,9 @@ export class FilmSearch {
   isEnd() {
     return this.page * this.per_page > this.total_results;
   }
+
+  isOne() {
+    return this.per_page > this.total_results;
+  }
+
 }

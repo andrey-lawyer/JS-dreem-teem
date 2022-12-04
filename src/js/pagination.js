@@ -6,9 +6,6 @@ import { FilmSearch } from './filmsearch';
 import createCards from '../templates/filmcard.hbs';
 import { Trending } from './trending';
 import { genres } from './genres';
-import { Spinner } from 'spin.js';
-import { onSearchFormSubmit } from './createFilmsGallery';
-import { loadTrendingMovies } from './createFilmsGallery';
 
 import createCards from '../templates/filmcard.hbs';
 
@@ -48,7 +45,7 @@ const options = {
       '</a>',
   },
 };
-const paginationMarkup = document.querySelector('.pugination-button');
+
 const pagination = new Pagination(container, options);
 
 pagination.on('afterMove', eventData => {
@@ -90,7 +87,11 @@ pagination.on('afterMove', eventData => {
   filmSearch.fetchFilmsByQuery().then(response => {
     
     filmSearch.total_results = response.data.total_results;
-    
+
+    if (filmSearch.isOne()){
+      container.classList.add('hidden-content');
+    } else   
+
     if (filmSearch.isEnd()) {
       container.classList.add('hidden-content');
     } else {
