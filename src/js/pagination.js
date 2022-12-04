@@ -7,15 +7,18 @@ import createCards from '../templates/filmcard.hbs';
 import { Trending } from './trending';
 import { genres } from './genres';
 import { Spinner } from 'spin.js';
+import { onSearchFormSubmit } from './createFilmsGallery';
+import { loadTrendingMovies } from './createFilmsGallery'
 
 import createCards from '../templates/filmcard.hbs';
 
 const gallery = document.querySelector('.gallery');
-const searchFormEl = document.querySelector('.js-search-form');
+const searchInput = document.querySelector('.search__input');
+const trending = new Trending();
 
 const filmSearch = new FilmSearch();
-const trending = new Trending();
-const response = filmSearch.fetchFilmsByQuery();
+
+// const response = filmSearch.fetchFilmsByQuery();
 
 const container = document.getElementById('pagination');
 const options = {
@@ -30,14 +33,14 @@ const options = {
   template: {
     page: '<a href="#" class="pagination-button">{{page}}</a>',
     currentPage:
-      '<strong class="pagination-current-button current-page-pag pagination">{{page}}</strong>',
+      '<strong id="pagination-current" class="pagination-current-button current-page-pag pagination">{{page}}</strong>',
     moveButton:
       '<a href="#" id="next" class="pagination-button tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span id="pugination-more-arrow" class="pagination-arrow tui-ico-{{type}}">{{type}}</span>' +
       '</a>',
     disabledMoveButton:
       '<span id="back" class="pagination-button tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span id="pagination-first"  class="tui-ico-{{type}}">{{type}}</span>' +
       '</span>',
     moreButton:
       '<a href="#"  id="more" class="pagination-button tui-{{type}}-is-ellip ">' +
@@ -49,22 +52,89 @@ const options = {
 const pagination = new Pagination(container, options);
 
 pagination.on('afterMove', eventData => {
-  filmSearch.page = eventData.page;
-  filmSearch.query = 'cat';
-  filmSearch.fetchFilmsByQuery().then(response => { 
-    console.log(response)
+
+if (searchInput.value === '') {
+  trending.page = eventData.page;
+  trending.fetchTrendingFilms().then(response => {
+    response.data.results.forEach(movie => {
+      if (movie.release_date) {
+        movie.release_date = ' |  ' + movie.release_date.slice(0, 4);
+      }
+      if (movie.title) {
+        movie.title = movie.title.toUpperCase();
+      }
+      if (!movie.poster_path) {
+        movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+      }
+
+      const newArr = [];
+      movie.genre_ids.map((element, index, array) => {
+        genres.forEach(genre => {
+          if (genre.id == element) {
+            newArr.push(genre.name);
+          }
+        });
+      });
+      if (newArr.length > 2) {
+        newArr.splice(2, newArr.length - 2, 'Other');
+      }
+      movie.genre_ids = [...newArr];
+    });
     gallery.innerHTML = createCards(response.data.results)
 
+    window.scrollTo(0,0)
+    return
+  })
+
+}
+  filmSearch.page = eventData.page;
+  filmSearch.query = searchInput.value;
+  filmSearch.fetchFilmsByQuery().then(response => { 
+
+    response.data.results.forEach(movie => {
+      if (movie.release_date) {
+        movie.release_date = '|  ' + movie.release_date.slice(0, 4);
+      }
+      if (movie.title) {
+        movie.title = movie.title.toUpperCase();
+      }
+      if (!movie.poster_path) {
+        movie.poster_path = '/vkcajIqORuKfd8uV2GYULlHut9o.jpg';
+      }
+
+      const newArr = [];
+      movie.genre_ids.map((element, index, array) => {
+        genres.forEach(genre => {
+          if (genre.id == element) {
+            newArr.push(genre.name);
+          }
+        });
+      });
+      if (newArr.length > 2) {
+        newArr.splice(2, newArr.length - 2, 'Other');
+      }
+      movie.genre_ids = [...newArr];
+    });
+
+    gallery.innerHTML = createCards(response.data.results)
+    window.scrollTo(0,0)
   } )
+
+
+  // filmSearch.page = eventData.page;
+  // filmSearch.query = searchInput.value;
+  // filmSearch.fetchFilmsByQuery().then(response => { 
+  //   console.log(response)
+  //   gallery.innerHTML = createCards(response.data.results)
+
+  // } )
+
+  
+
+
   // gallery.innerHTML = createCards(response.data.results);
 });
 
 //додавання атрибуту 
-const paginationButtonLast = document.querySelector(".tui-last");
-const paginationImageLast = document.querySelector(".tui-ico-last");
-
-paginationButtonLast.classList. add("tui-is-disabled")
-paginationImageLast.classList.add("tui-is-disabled")
-// paginationButtonLast.setAttribute("hidden", true);
-
-
+// const paginationButtonLast = document.querySelector(".tui-last");
+// const paginationArrowLast = document.querySelector(".tui-ico-last");
