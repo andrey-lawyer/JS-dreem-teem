@@ -255,8 +255,6 @@ buttonQueueModal.addEventListener('click', () => {
   addLocalStorageQueue(dateFilm);
 });
 
-let arrayWathed = [];
-let arrayQueue = [];
 function addLocalStorageWatch(date) {
   buttonWathedModal.disabled = true;
   buttonQueueModal.disabled = true;
@@ -272,10 +270,18 @@ function addLocalStorageWatch(date) {
     popularity,
     release_date,
   } = date;
-
-  const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-
+  let dateLocalWatch;
+  let dateLocalQueue;
+  dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+  dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+  let arrayWathed;
+  let arrayQueue;
+  arrayWathed = dateLocalWatch ? dateLocalWatch : [];
+  arrayQueue = dateLocalQueue ? dateLocalQueue : [];
+  // console.log(arrayWathed);
+  // console.log(arrayQueue);
+  console.log(localStorage.getItem(STORAGE_KEY_WATCHED));
+  // console.log(dateLocalWatch);
   if (arrayWathed.length > 0) {
     const findWatch = dateLocalWatch.find(el => el.id === id);
     if (findWatch) {
@@ -332,8 +338,16 @@ function addLocalStorageQueue(date) {
     release_date,
   } = date;
 
-  const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+  let dateLocalWatch;
+  let dateLocalQueue;
+  dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+  dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+  let arrayWathed;
+  let arrayQueue;
+  arrayWathed = dateLocalWatch ? dateLocalWatch : [];
+  arrayQueue = dateLocalQueue ? dateLocalQueue : [];
+  // const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+  // const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 
   if (arrayWathed.length > 0) {
     const findWatch = dateLocalWatch.find(el => el.id === id);

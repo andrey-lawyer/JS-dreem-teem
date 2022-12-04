@@ -39,7 +39,20 @@ function CardsLoadmore(date, button) {
     button.style.display = 'block';
   }
 }
-CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
+console.log(parsedateLocalWathed);
+if (!parsedateLocalWathed) {
+  const images = `
+   <div >        
+          <img src="https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg"
+          alt="movie" loading="lazy" />     
+   </div>
+      `;
+  refs.containerLibrary.innerHTML = images;
+} else {
+  CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
+}
+
+// https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg
 
 function onClickLoadMore(date, buttons) {
   counterBegin += 6;
@@ -66,19 +79,39 @@ refs.buttonLoadMoreQueue.addEventListener('click', () =>
 
 // LOAD-MORE!!!!!!!!!!!!!!!!!!!
 const onShowQueue = () => {
-  refs.buttonLoadMoreWatched.style.display = 'none';
-  // refs.containerLibrary.innerHTML = createCards(parsedateLocalQueuee);
-  CardsLoadmore(parsedateLocalQueuee, refs.buttonLoadMoreQueue);
-  refs.buttonLibraryWatched.style.backgroundColor = 'transparent';
-  refs.buttonLibraryQueue.style.backgroundColor = '#ff6b01';
+  if (!parsedateLocalQueuee) {
+    const images = `
+   <div >        
+          <img src="https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg"
+          alt="movie" loading="lazy" />     
+   </div>
+      `;
+    refs.containerLibrary.innerHTML = images;
+  } else {
+    refs.buttonLoadMoreWatched.style.display = 'none';
+    // refs.containerLibrary.innerHTML = createCards(parsedateLocalQueuee);
+    CardsLoadmore(parsedateLocalQueuee, refs.buttonLoadMoreQueue);
+    refs.buttonLibraryWatched.style.backgroundColor = 'transparent';
+    refs.buttonLibraryQueue.style.backgroundColor = '#ff6b01';
+  }
 };
 
 refs.buttonLibraryQueue.addEventListener('click', onShowQueue);
 
 const onShowWatched = () => {
-  refs.buttonLoadMoreQueue.style.display = 'none';
-  CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
-  refs.buttonLibraryQueue.style.backgroundColor = 'transparent';
-  refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
+  if (!parsedateLocalWathed) {
+    const images = `
+   <div >        
+          <img src="https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg"
+          alt="movie" loading="lazy" />     
+   </div>
+      `;
+    refs.containerLibrary.innerHTML = images;
+  } else {
+    refs.buttonLoadMoreQueue.style.display = 'none';
+    CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
+    refs.buttonLibraryQueue.style.backgroundColor = 'transparent';
+    refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
+  }
 };
 refs.buttonLibraryWatched.addEventListener('click', onShowWatched);
