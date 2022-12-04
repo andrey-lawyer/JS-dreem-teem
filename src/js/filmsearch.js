@@ -25,7 +25,7 @@ export class FilmSearch {
     return axios.get(`${this.#URL}?${searchParams}`);
   }
 
-  isNextDataExist() {
-    return this.page * this.per_page < this.total_results;
+  isEnd() {
+    return this.page * this.per_page > this.total_results;
   }
 }
