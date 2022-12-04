@@ -7,7 +7,7 @@ const refs = {
 };
 
 refs.galleryEl.addEventListener('click', toggleModal);
-refs.closeModalBtn.addEventListener('click', modalClose);
+// refs.closeModalBtn.addEventListener('click', modalClose);
 
 function toggleModal(event) {
   const item = event.target.closest('.gallery__item');
@@ -18,6 +18,7 @@ function toggleModal(event) {
   refs.body.classList.add('overflow-hidden');
   document.addEventListener('keydown', onEscDown);
   document.addEventListener('click', closeOnBackdropClick);
+  refs.modal.addEventListener('click', closeOnClick);
 }
 // правки Андрей
 const buttonWathedModal = document.querySelector('.js-Wathed');
@@ -29,6 +30,7 @@ function modalClose(event) {
   document.removeEventListener('keydown', onEscDown);
   refs.body.classList.remove('overflow-hidden');
   removeEventListener('click', closeOnBackdropClick);
+  removeEventListener('click', closeOnClick);
   // правки Андрей
   // buttonWathedModal.disabled = false;
   // buttonQueueModal.disabled = false;
@@ -47,3 +49,14 @@ function closeOnBackdropClick(event) {
     modalClose();
   }
 }
+//  Sasha corrected
+//
+refs.modal.addEventListener('click', closeOnClick);
+
+function closeOnClick(event) {
+  if (event.target.nodeName === 'svg' || event.target.nodeName === 'path') {
+    modalClose();
+  }
+}
+//
+//   Sasha

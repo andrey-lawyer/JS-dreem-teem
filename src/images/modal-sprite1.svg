@@ -1,8 +1,8 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
-<symbol id="icon-close-btn"viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8 8L22 22" stroke="black" stroke-width="2"></path>
-<path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
-</symbol>
+    <symbol id="icon-close-btn"viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 8L22 22" stroke="black" stroke-width="2"></path>
+    <path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
+    </symbol>
 </defs>
 </svg>
