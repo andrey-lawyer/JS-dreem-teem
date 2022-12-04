@@ -125,3 +125,11 @@ span#pagination-first.tui-ico-prev {
   a#next.pagination-button.tui-first {
     display: none;
   }
+
+  //Прибираэмо відображення пагінації при малій кількості запитів
+  #pagination.hidden-content.tui-pagination {
+    display: none;
+  }
+  .hidden-content{
+    display: none;
+  }
