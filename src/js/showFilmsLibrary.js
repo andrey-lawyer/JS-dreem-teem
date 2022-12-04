@@ -8,7 +8,7 @@ const dateLocalWathed = localStorage.getItem(STORAGE_KEY_WATCHED);
 const dateLocalQueuee = localStorage.getItem(STORAGE_KEY_QUEUEE);
 const parsedateLocalWathed = JSON.parse(dateLocalWathed);
 const parsedateLocalQueuee = JSON.parse(dateLocalQueuee);
-console.log(parsedateLocalQueuee);
+console.log('card info: ', parsedateLocalQueuee);
 
 const refs = {
   buttonLibraryWatched: document.querySelector('.js-library-watch'),

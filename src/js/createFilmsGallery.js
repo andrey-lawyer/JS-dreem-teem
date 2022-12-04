@@ -7,6 +7,7 @@ import { genres } from './genres';
 import { Spinner } from 'spin.js';
 import { GetFullMovieInfo } from './getFullMovieInfo';
 
+
 const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.js-gallery-home');
 const movieInfoModalEl = document.querySelector('.js-movie-info');
@@ -15,6 +16,7 @@ const jsContainer = document.querySelector('.js-container-movie');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
 const getFullMovieInfo = new GetFullMovieInfo();
+console.log("getFullMovieInfo", getFullMovieInfo)
 const inputEl = document.querySelector('#search__input');
 // const inputEl = document.querySelector('#search__input');
 //
@@ -22,7 +24,7 @@ const buttonWathedModal = document.querySelector('.js-Wathed');
 const buttonQueueModal = document.querySelector('.js-Queuee');
 const STORAGE_KEY_WATCHED = 'wathedlist-films';
 const STORAGE_KEY_QUEUEE = 'queuee-films';
-let dateFilm;
+export let dateFilm;
 //
 // =====================Spinner============================
 const opts = {
@@ -58,6 +60,7 @@ const onSearchFormSubmit = async event => {
 
   try {
     const response = await filmSearch.fetchFilmsByQuery();
+    console.log("onSearchFormSubmit ~ response", response)
 
     if (response.data.total_results === 0) {
       event.target.elements.searchQuery.value = ' ';
@@ -241,10 +244,11 @@ const onFilmCardClick = async event => {
   } catch (error) {
     Notiflix.Notify.failure(console.log(error));
   }
-
+  
   spinner.stop();
 };
 
+console.log("onFilmCardClick ~ dateFilm", dateFilm)
 galleryEl.addEventListener('click', onFilmCardClick);
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Add local storage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -370,7 +374,159 @@ function addLocalStorageQueue(date) {
   arrayQueue.push(newObject);
   localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(arrayQueue));
 }
-// console.log(localStorage);
-// const d = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-// console.log(d);
-// localStorage.clear();
+console.log(localStorage);
+const d = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+console.log(d);
+localStorage.clear();
+
+
+//====================================================================================================================================================================
+// import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+// import { initializeApp } from 'firebase/app';
+
+// //=================================================CONFIG=================================
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyCrP7E5haKTVyI6lKJMTMvuMBrP4RzO9c4',
+//   authDomain: 'fir-ninja-f883b.firebaseapp.com',
+//   projectId: 'fir-ninja-f883b',
+//   appId: '1:103219943409:web:44692b24dfc2797317d650',
+//   measurementId: 'G-Z7SKLQBVFJ',
+// };
+
+// // =========================================Initialize Firebase=========================
+// const app = initializeApp(firebaseConfig);
+
+// // Make auth and firestore references
+// const db = getFirestore(app);
+
+// const queueRef = document.querySelector('.js-library-queue');
+// console.log("queueRef", queueRef);
+// queueRef.addEventListener('click', getQueue);
+// const colRef = collection(db, "guides")
+// // let arrayWathed = [];
+// // let arrayQueue = [];
+// function addLocalStorageWatch(date) {
+//   // buttonWathedModal.disabled = true;
+//   // buttonQueueModal.disabled = true;
+//   addDoc(colRef, { ...date });
+//   // let {
+//   //   genres,
+//   //   homepage,
+//   //   id,
+//   //   original_title,
+//   //   poster_path,
+//   //   title,
+//   //   vote_average,
+//   //   vote_count,
+//   //   popularity,
+//   //   release_date,
+//   // } = date;
+//   // const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+//   // const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+
+//   // if (arrayWathed.length > 0) {
+//   //   const findWatch = dateLocalWatch.find(el => el.id === id);
+//   //   if (findWatch) {
+//   //     Notiflix.Notify.failure('Sorry, this movie has already been added');
+//   //     return;
+//   //   }
+//   // }
+//   // if (arrayQueue.length > 0) {
+//   //   const findQueue = dateLocalQueue.find(el => el.id === id);
+//   //   if (findQueue) {
+//   //     Notiflix.Notify.failure('Sorry, this movie has already been added');
+//   //     return;
+//   //   }
+//   // }
+
+//   // if (genres.length > 3) {
+//   //   genres = [genres[0], genres[1], 'Оther'];
+//   // }
+//   // genres = genres.join();
+//   // release_date = ' |  ' + release_date.slice(0, 4);
+//   // const newObject = {
+//   //   genres,
+//   //   homepage,
+//   //   id,
+//   //   original_title,
+//   //   poster_path,
+//   //   title,
+//   //   vote_average,
+//   //   vote_count,
+//   //   popularity,
+//   //   release_date,
+//   // };
+
+//   // arrayWathed.push(newObject);
+//   // localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(arrayWathed));
+
+//   // const dateLocal = localStorage.getItem(STORAGE_KEY_WATCHED);
+//   // console.log(JSON.parse(dateLocal));
+// }
+
+// function getQueue() { 
+//   getDocs(colRef) 
+//     .then((snapshot) => {
+//       console.log("snapshot", snapshot.docs)
+//       let guides = [];
+//       snapshot.docs.forEach((doc) => {
+//         guides.push({ ...doc.data(), id: doc.id })
+//         });
+//       console.log(guides);
+//     })
+//    .catch(err => console.log(err))
+// }
+// // function addLocalStorageQueue(date) {
+// //   buttonWathedModal.disabled = true;
+// //   buttonQueueModal.disabled = true;
+// //   let {
+// //     genres,
+// //     homepage,
+// //     id,
+// //     original_title,
+// //     poster_path,
+// //     title,
+// //     vote_average,
+// //     vote_count,
+// //     popularity,
+// //     release_date,
+// //   } = date;
+
+// //   const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+// //   const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+
+// //   if (arrayWathed.length > 0) {
+// //     const findWatch = dateLocalWatch.find(el => el.id === id);
+// //     if (findWatch) {
+// //       Notiflix.Notify.failure('Sorry, this movie has already been added');
+// //       return;
+// //     }
+// //   }
+// //   if (arrayQueue.length > 0) {
+// //     const findQueue = dateLocalQueue.find(el => el.id === id);
+// //     if (findQueue) {
+// //       Notiflix.Notify.failure('Sorry, this movie has already been added');
+// //       return;
+// //     }
+// //   }
+
+// //   if (genres.length > 3) {
+// //     genres = [genres[0], genres[1], 'Оther'];
+// //   }
+// //   genres = genres.join();
+// //   release_date = ' |  ' + release_date.slice(0, 4);
+// //   const newObject = {
+// //     genres,
+// //     homepage,
+// //     id,
+// //     original_title,
+// //     poster_path,
+// //     title,
+// //     vote_average,
+// //     vote_count,
+// //     popularity,
+// //     release_date,
+// //   };
+// //   arrayQueue.push(newObject);
+// //   localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(arrayQueue));
+// // }

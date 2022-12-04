@@ -6,7 +6,6 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth';
-import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 //=================================================CONFIG=================================
 const firebaseConfig = {
@@ -22,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 
 // Make auth and firestore references
 const auth = getAuth(app);
-const db = getFirestore(app);
+// const db = getFirestore(app);
 // =====================================Listen for auth status changes===================
 onAuthStateChanged(auth, user => {
   console.log('user', user);
@@ -31,7 +30,7 @@ onAuthStateChanged(auth, user => {
   } else {
     // User is signed out
     console.log('User logged out');
-    alert('Please Log in');
+    // alert('Please Log in');
   }
 });
 
@@ -55,6 +54,7 @@ function onSignup(event) {
       signupForm.reset();
     })
     .catch(error => {
+      
       const errorCode = error.code;
       const errorMessage = error.message;
     });
@@ -89,24 +89,13 @@ function onLoginBtn(event) {
     })
     .catch(error => {
       alert('there is no user with such email or password');
-      const errorCode = error.code;
-      console.log('errorCode', errorCode);
-      const errorMessage = error.message;
-      console.log('errorMessage', errorMessage);
+      // const errorCode = error.code;
+      // console.log('errorCode', errorCode);
+      // const errorMessage = error.message;
+      // console.log('errorMessage', errorMessage);
     });
 }
 
-// // Get Data
-// const querySnapshot = collection(db, "guides")
-// getDocs(querySnapshot)
-//   .then((snapshot) => {
-//     console.log("snapshot", snapshot.docs)
-//   //   let guides = [];
-//   //  snapshot.docs.forEach((doc) => {
-//   //    guides.push({ ...doc.data(), id: doc.id })
-//     // });
-//     // console.log(guides);
-//   })
-//  .catch(err => console.log(err))
+
 
 //  // Add Data
