@@ -9,6 +9,7 @@ import { genres } from './genres';
 
 import createCards from '../templates/filmcard.hbs';
 
+
 const gallery = document.querySelector('.gallery');
 const searchInput = document.querySelector('.search__input');
 const trending = new Trending();
@@ -87,10 +88,6 @@ pagination.on('afterMove', eventData => {
   filmSearch.fetchFilmsByQuery().then(response => {
     
     filmSearch.total_results = response.data.total_results;
-
-    if (filmSearch.isOne()){
-      container.classList.add('hidden-content');
-    } else   
 
     if (filmSearch.isEnd()) {
       container.classList.add('hidden-content');

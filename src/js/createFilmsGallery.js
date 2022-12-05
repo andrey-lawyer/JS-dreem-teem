@@ -11,7 +11,7 @@ const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.js-gallery-home');
 const movieInfoModalEl = document.querySelector('.js-movie-info');
 const jsContainer = document.querySelector('.js-container-movie');
-// const loadMoreBtn = document.querySelector('.load-more');
+const container = document.getElementById('pagination');
 const filmSearch = new FilmSearch();
 const trending = new Trending();
 const getFullMovieInfo = new GetFullMovieInfo();
@@ -70,6 +70,12 @@ export const onSearchFormSubmit = async event => {
       return;
     }
     filmSearch.total_results = response.data.total_results;
+
+    if (filmSearch.total_results <= filmSearch.per_page) {
+      container.classList.add('hidden-content');
+    } else {
+      container.classList.remove('hidden-content');
+    }
 
     // if (response.data.total_results <= filmSearch.per_page) {
     //   loadMoreBtn.classList.add('is-hidden');
