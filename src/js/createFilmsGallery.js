@@ -235,8 +235,8 @@ const onFilmCardClick = async event => {
     jsContainer.innerHTML = createMovieInfoModal(response.data);
     // Add local storage!!!!!!!!!!!!!!!
     dateFilm = response.data;
-    buttonWathedModal.disabled = false;
-    buttonQueueModal.disabled = false;
+    // buttonWathedModal.disabled = false;
+    // buttonQueueModal.disabled = false;
     // Add local storage!!!!!!!!!!!!!!!!
   } catch (error) {
     Notiflix.Notify.failure(console.log(error));
@@ -248,16 +248,16 @@ const onFilmCardClick = async event => {
 galleryEl.addEventListener('click', onFilmCardClick);
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Add local storage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-buttonWathedModal.addEventListener('click', () => {
-  addLocalStorageWatch(dateFilm);
-});
-buttonQueueModal.addEventListener('click', () => {
-  addLocalStorageQueue(dateFilm);
-});
+// buttonWathedModal.addEventListener('click', () => {
+//   addLocalStorageWatch(dateFilm);
+// });
+// buttonQueueModal.addEventListener('click', () => {
+//   addLocalStorageQueue(dateFilm);
+// });
 
 function addLocalStorageWatch(date) {
-  buttonWathedModal.disabled = true;
-  buttonQueueModal.disabled = true;
+  // buttonWathedModal.disabled = true;
+  // buttonQueueModal.disabled = true;
   let {
     genres,
     homepage,
@@ -280,7 +280,7 @@ function addLocalStorageWatch(date) {
   arrayQueue = dateLocalQueue ? dateLocalQueue : [];
   // console.log(arrayWathed);
   // console.log(arrayQueue);
-  console.log(localStorage.getItem(STORAGE_KEY_WATCHED));
+  // console.log(localStorage.getItem(STORAGE_KEY_WATCHED));
   // console.log(dateLocalWatch);
   if (arrayWathed.length > 0) {
     const findWatch = dateLocalWatch.find(el => el.id === id);
@@ -323,8 +323,8 @@ function addLocalStorageWatch(date) {
 }
 
 function addLocalStorageQueue(date) {
-  buttonWathedModal.disabled = true;
-  buttonQueueModal.disabled = true;
+  // buttonWathedModal.disabled = true;
+  // buttonQueueModal.disabled = true;
   let {
     genres,
     homepage,
@@ -388,3 +388,32 @@ function addLocalStorageQueue(date) {
 // const d = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 // console.log(d);
 // localStorage.clear();
+
+//  ===============SASHA ===============================   //
+const modal = document.querySelector('.modal__container');
+
+modal.addEventListener('click', event => {
+  if (event.target.classList.contains('js-Queuee')) {
+    // console.log('Q');
+
+    addLocalStorageQueue(dateFilm);
+
+    let button = document.querySelector('.js-Queuee');
+    button.disabled = true;
+    button.textContent = 'Added to Queue';
+
+    // button.addEventListener('click', event => removeFromLS());
+  }
+
+  if (event.target.classList.contains('js-Wathed')) {
+    // console.log('W');
+
+    addLocalStorageWatch(dateFilm);
+
+    const button = document.querySelector('.js-Wathed');
+    button.disabled = true;
+    button.textContent = 'Added to Watched';
+  }
+});
+
+// =========Sasha ========    ///
