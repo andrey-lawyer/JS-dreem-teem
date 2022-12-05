@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Andrey",
+    "role": "Team - Lead",
+    "photo": "https://avatars.githubusercontent.com/u/113498656?v=4",
+    "github-link": "https://github.com/andrey-lawyer"
+  },
+  {
+    "name": "Anna",
+    "role": "Scrum",
+    "photo": "https://avatars.githubusercontent.com/u/113632878?v=4",
+    "github-link": "https://github.com/annaKumchar"
+  },
+  {
+    "name": "Yuriy",
+    "role": "Developer",
+    "photo": "https://avatars.githubusercontent.com/u/90905066?v=4",
+    "github-link": "https://github.com/yuriy0790"
+  },
+  {
+    "name": "Anton",
+    "role": "Developer",
+    "photo": "https://avatars.githubusercontent.com/u/107267029?v=4",
+    "github-link": "https://github.com/npakypop"
+  },
+  {
+    "name": "Sasha",
+    "role": "Developer",
+    "photo": "https://avatars.githubusercontent.com/u/103116337?v=4",
+    "github-link": "https://github.com/thehsadowte"
+  }
+]
