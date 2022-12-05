@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../node_modules/spin.js/spin.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filmoteka</title>
-  <link rel="stylesheet" href="./sass/index.scss" />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="../node_modules/spin.js/spin.css" />
-
-
-</head>
-
-<body>
-  <header class="header">
-    <include src="./partials/headerMainPage.html"></include>
-  </header>
-  <main class="page-main">
-    <include src="./partials/containerMainPage.html"></include>
-    <include src="./partials/pagination.html"></include>
-    <!-- <include src="./partials/movieСardTemplate.html"></include> -->
-  </main>
-  <footer class="page-footer">
-    <include src="./partials/footer.html"></include>
-  </footer>
-  <!-- Modal Windows -->
-  <include src="./partials/modal.html"></include>
-  <!-- <include src="./partials/pagination.html"></include> -->
-  <!-- <include src="./partials/loaderSpinner.html"></include> -->
-  <script type="module" src="./index.js"></script>
-  <!-- <script src="./index.js"></script> -->
-</body>
-
+  <body>
+    <header class="header">
+      <include src="./partials/headerMainPage.html"></include>
+    </header>
+    <main class="page-main">
+      <include src="./partials/containerMainPage.html"></include>
+      <include src="./partials/pagination.html"></include>
+      <include src="./partials/toTop.html"></include>
+      <!-- <include src="./partials/movieСardTemplate.html"></include> -->
+    </main>
+    <footer class="page-footer">
+      <include src="./partials/footer.html"></include>
+    </footer>
+    <!-- Modal Windows -->
+    <include src="./partials/modal.html"></include>
+    <!-- <include src="./partials/pagination.html"></include> -->
+    <!-- <include src="./partials/loaderSpinner.html"></include> -->
+    <script type="module" src="./index.js"></script>
+    <!-- <script src="./index.js"></script> -->
+  </body>
 </html>
