@@ -6,6 +6,7 @@ import { Trending } from './trending';
 import { genres } from './genres';
 import { Spinner } from 'spin.js';
 import { GetFullMovieInfo } from './getFullMovieInfo';
+import { toCardModalLibrary } from './showFilmsLibrary';
 
 const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.js-gallery-library');
@@ -18,11 +19,17 @@ const getFullMovieInfo = new GetFullMovieInfo();
 const inputEl = document.querySelector('#search__input');
 // const inputEl = document.querySelector('#search__input');
 //
-const buttonWathedModal = document.querySelector('.js-Wathed');
-const buttonQueueModal = document.querySelector('.js-Queuee');
+
+// uuuuuuuuuuu
 const STORAGE_KEY_WATCHED = 'wathedlist-films';
 const STORAGE_KEY_QUEUEE = 'queuee-films';
+// let dateLocalWatch;
+// let dateLocalQueue;
+let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 let dateFilm;
+
+// uuuuuuuuuuuuuuuu
 //
 // =====================Spinner============================
 const opts = {
@@ -82,183 +89,112 @@ const onFilmCardClick = async event => {
     response.data.genres = [...newArr];
 
     jsContainer.innerHTML = createMovieInfoModal(response.data);
-    // Add local storage!!!!!!!!!!!!!!!
+
     dateFilm = response.data;
-    // buttonWathedModal.disabled = false;
-    // buttonQueueModal.disabled = false;
-    // Add local storage!!!!!!!!!!!!!!!!
+    //Меняет название кнопок в модальном окне!!!!!!!!!!!!!!!
+    toModalLocalStorage();
+    //Меняет название кнопок в модальном окне!!!!!!!!!!!!!!!
   } catch (error) {
     Notiflix.Notify.failure(console.log(error));
   }
 
   spinner.stop();
 };
-
 galleryEl.addEventListener('click', onFilmCardClick);
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Add local storage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// buttonWathedModal.addEventListener('click', () => {
-//   addLocalStorageWatch(dateFilm);
-// });
-// buttonQueueModal.addEventListener('click', () => {
-//   addLocalStorageQueue(dateFilm);
-// });
-
-function addLocalStorageWatch(date) {
-  // buttonWathedModal.disabled = true;
-  // buttonQueueModal.disabled = true;
-  let {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  } = date;
-  let dateLocalWatch;
-  let dateLocalQueue;
-  dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-  let arrayWathed;
-  let arrayQueue;
-  arrayWathed = dateLocalWatch ? dateLocalWatch : [];
-  arrayQueue = dateLocalQueue ? dateLocalQueue : [];
-  // console.log(arrayWathed);
-  // console.log(arrayQueue);
-  // console.log(localStorage.getItem(STORAGE_KEY_WATCHED));
-  // console.log(dateLocalWatch);
-  if (arrayWathed.length > 0) {
-    const findWatch = dateLocalWatch.find(el => el.id === id);
-    if (findWatch) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
+function toModalLocalStorage() {
+  setTimeout(() => {
+    const buttonWathedModal = document.querySelector('.js-Wathed');
+    const buttonQueueModal = document.querySelector('.js-Queuee');
+    const choiceLocalStorage = dateLocalWatch.find(el => el.id === dateFilm.id);
+    if (!choiceLocalStorage) {
+      buttonWathedModal.textContent = 'REMOVED FROM QUEUE';
+      // buttonQueueModal.textContent = 'ADD TO WATCHED';
+      buttonQueueModal.textContent = 'ADD TO WATCHED/QUEUE';
+    } else {
+      buttonWathedModal.textContent = 'REMOVED FROM WATCHED';
+      // buttonQueueModal.textContent = 'ADD TO QUEUE';
+      buttonQueueModal.textContent = 'ADD TO WATCHED/QUEUE';
     }
-  }
-  if (arrayQueue.length > 0) {
-    const findQueue = dateLocalQueue.find(el => el.id === id);
-    if (findQueue) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
-
-  if (genres.length > 3) {
-    genres = [genres[0], genres[1], 'Оther'];
-  }
-  genres = genres.join();
-  release_date = ' |  ' + release_date.slice(0, 4);
-  const newObject = {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  };
-
-  arrayWathed.push(newObject);
-  localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(arrayWathed));
-
-  // const dateLocal = localStorage.getItem(STORAGE_KEY_WATCHED);
-  // console.log(JSON.parse(dateLocal));
+    // console.log(dateFilm.id);
+    // console.log(dateLocalWatch);
+  }, 0);
 }
 
-function addLocalStorageQueue(date) {
-  // buttonWathedModal.disabled = true;
-  // buttonQueueModal.disabled = true;
-  let {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  } = date;
-
-  let dateLocalWatch;
-  let dateLocalQueue;
-  dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-  let arrayWathed;
-  let arrayQueue;
-  arrayWathed = dateLocalWatch ? dateLocalWatch : [];
-  arrayQueue = dateLocalQueue ? dateLocalQueue : [];
-  // const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  // const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-
-  if (arrayWathed.length > 0) {
-    const findWatch = dateLocalWatch.find(el => el.id === id);
-    if (findWatch) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
-  if (arrayQueue.length > 0) {
-    const findQueue = dateLocalQueue.find(el => el.id === id);
-    if (findQueue) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
-
-  if (genres.length > 3) {
-    genres = [genres[0], genres[1], 'Оther'];
-  }
-  genres = genres.join();
-  release_date = ' |  ' + release_date.slice(0, 4);
-  const newObject = {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  };
-  arrayQueue.push(newObject);
-  localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(arrayQueue));
-}
-// console.log(localStorage);
-// const d = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-// console.log(d);
 // localStorage.clear();
 
 //  ===============SASHA ===============================   //
+
 const modal = document.querySelector('.modal__container');
 
 modal.addEventListener('click', event => {
-  if (event.target.classList.contains('js-Queuee')) {
-    // removeFromLs(dateFilm);
-
-    let button = document.querySelector('.js-Queuee');
-    button.disabled = true;
-    button.textContent = 'Removed from Queue';
-
-    // button.addEventListener('click', event => removeFromLS());
-  }
-
-  if (event.target.classList.contains('js-Wathed')) {
-    // removeFromLs(dateFilm);
-
-    const button = document.querySelector('.js-Wathed');
-    button.disabled = true;
-    button.textContent = 'Removed from Watched';
-  }
+  setTimeout(() => {
+    // const buttonWathedModal = document.querySelector('.js-Wathed');
+    // const buttonQueueModal = document.querySelector('.js-Queuee');
+    //  удаление фильмов
+    if (event.target.classList.contains('js-Wathed')) {
+      let dateLocalWatch = JSON.parse(
+        localStorage.getItem(STORAGE_KEY_WATCHED)
+      );
+      let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+      const findEl = dateLocalWatch.find(el => el.id === dateFilm.id);
+      // console.log(findEl);
+      if (!findEl) {
+        const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+        // console.log(newLocalQueue);
+        localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
+        toCardModalLibrary();
+      } else {
+        const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+        // console.log(newLocalWatch);
+        localStorage.setItem(
+          STORAGE_KEY_WATCHED,
+          JSON.stringify(newLocalWatch)
+        );
+        toCardModalLibrary();
+      }
+    }
+    //  удаление фильмов
+    // перенос фильмов
+    if (event.target.classList.contains('js-Queuee')) {
+      console.log('jkjkkjkj');
+      let dateLocalWatch = JSON.parse(
+        localStorage.getItem(STORAGE_KEY_WATCHED)
+      );
+      let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+      const findElWatch = dateLocalWatch.find(el => el.id === dateFilm.id);
+      const findElQueue = dateLocalQueue.find(el => el.id === dateFilm.id);
+      console.log(findElWatch);
+      if (!findElWatch) {
+        const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+        // console.log(newLocalQueue);
+        localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
+        dateLocalWatch.push(findElQueue);
+        localStorage.setItem(
+          STORAGE_KEY_WATCHED,
+          JSON.stringify(dateLocalWatch)
+        );
+        // buttonQueueModal.textContent = 'ADD TO WATCHED';
+        toCardModalLibrary();
+      } else {
+        const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+        // console.log(newLocalWatch);
+        localStorage.setItem(
+          STORAGE_KEY_WATCHED,
+          JSON.stringify(newLocalWatch)
+        );
+        dateLocalQueue.push(findElWatch);
+        localStorage.setItem(
+          STORAGE_KEY_QUEUEE,
+          JSON.stringify(dateLocalQueue)
+        );
+        // buttonQueueModal.textContent = 'ADD TO QUEUE';
+        toCardModalLibrary();
+      }
+      // перенос фильмов
+    }
+  }, 0);
 });
 
-// =========Sasha ========    ///
+// =========Sasha ========
