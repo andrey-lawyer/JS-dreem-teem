@@ -1,6 +1,6 @@
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-
+import { filmInfo } from './createFilmsGallery'
 //=================================================CONFIG=================================
 const firebaseConfig = {
   apiKey: 'AIzaSyCrP7E5haKTVyI6lKJMTMvuMBrP4RzO9c4',
@@ -20,7 +20,7 @@ const db = getFirestore(app);
 // function setupLib(data) { 
 
 // }
-
+console.log('film info', filmInfo);
 // Get Data
 const queueRef = document.querySelector('.js-library-queue');
 console.log("queueRef", queueRef);
@@ -35,7 +35,7 @@ function getQueue() {
       snapshot.docs.forEach((doc) => {
         guides.push({ ...doc.data(), id: doc.id })
         });
-      console.log(guides);
+      console.log('guides:', guides);
     })
    .catch(err => console.log(err))
 }

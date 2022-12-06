@@ -20,7 +20,7 @@ const refs = {
   buttonLoadMoreQueue: document.querySelector('.queue'),
 };
 
-refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
+// refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
 
 // LOAD-MORE!!!!!!!!!!!!!!!!!!!!!!
 

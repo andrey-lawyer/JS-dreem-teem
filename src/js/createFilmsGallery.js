@@ -202,21 +202,22 @@ loadTrendingMovies();
 // ================================Full movie info card modal=========================
 const onFilmCardClick = async event => {
   // event.preventDefault();
-
+  
   const spinner = new Spinner(opts).spin();
   galleryEl.prepend(spinner.el);
-
+  
   if (event.target.nodeName === 'UL') {
     console.log('miss');
     return;
   }
   getFullMovieInfo.id = event.target.closest('li').dataset.id;
-
+  
   // console.log(getFullMovieInfo.id);
-
+  
   try {
     const response = await getFullMovieInfo.fetchFilmsByID();
-
+    // console.log("onFilmCardClick ~ response", response)
+    
     if (response.data.title) {
       response.data.title = response.data.title.toUpperCase();
     }
@@ -246,11 +247,11 @@ const onFilmCardClick = async event => {
   }
   
   spinner.stop();
-};
+}
+// onFilmCardClick().then(res => console.log(res))
 
-console.log("onFilmCardClick ~ dateFilm", dateFilm)
+// console.log("onFilmCardClick ~ dateFilm", dateFilm)
 galleryEl.addEventListener('click', onFilmCardClick);
-
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Add local storage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 buttonWathedModal.addEventListener('click', () => {
   addLocalStorageWatch(dateFilm);

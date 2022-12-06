@@ -33,6 +33,7 @@
   }
 }
 .header-container__main {
+  position: relative;
   padding-top: 40px;
   padding-bottom: 92px;
   max-width: 1280px;
@@ -253,9 +254,18 @@
   text-decoration: none;
   
 }
-//=============================================
-
+//=============================================Login nav=============================================
+#nav-mobile{
+  position: absolute;
+  z-index: 2;
+  top:20px;
+  right: 32px;
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
 .acount-nav{
+  text-decoration: none;
   color: white;
   &:hover{
     color:teal;
