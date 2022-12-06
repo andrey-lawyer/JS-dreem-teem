@@ -17,6 +17,8 @@
   pointer-events: none;
 }
 .modal__container {
+  // display: flex;
+
   position: fixed;
   top: 50%;
   left: 50%;
@@ -32,16 +34,17 @@
   background-color: #fff;
 
   @include media('tablet') {
-    display: flex;
+    // display: flex;
     width: 704px;
     max-width: 704px;
-    // padding: 40px 72px 40px 36px;
+
+    padding: 40px 72px 80px 36px;
   }
 
   @include media('desktop') {
     min-width: 806px;
     // max-width: 806px;
-    padding: 40px 12px 40px 12px;
+    padding: 40px 12px 80px 12px;
   }
 }
 .modal__btn-close {
@@ -183,6 +186,9 @@
   transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     border 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  @include media('tablet') {
+    display: block;
+  }
 
   &:hover,
   &:focus {
@@ -207,5 +213,40 @@
 .overflow-hidden {
   overflow: hidden;
 }
-.js-container-movie {
+// .js-container-movie {
+//   @include media('tablet') {
+//     display: flex;
+//     // align-items: center;
+//   }
+
+//   @include media('desktop') {
+//   }
+// }
+
+.btn__container {
+  @include media('tablet') {
+    position: absolute;
+    top: 85%;
+    left: 55%;
+    gap: 10px;
+  }
+
+  // @include media('desktop') {
+  //   position: absolute;
+  //   top: 82%;
+  //   left: 55%;
+  // }
+}
+
+.image__container {
+  @include media('tablet') {
+    float: left;
+    display: block;
+  }
+}
+.movie__description {
+  @include media('tablet') {
+    float: left;
+    display: block;
+  }
 }
