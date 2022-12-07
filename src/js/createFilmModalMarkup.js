@@ -28,6 +28,7 @@ const STORAGE_KEY_QUEUEE = 'queuee-films';
 let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
 let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 let dateFilm;
+let idCard;
 
 // uuuuuuuuuuuuuuuu
 //
@@ -64,7 +65,7 @@ const onFilmCardClick = async event => {
     return;
   }
   getFullMovieInfo.id = event.target.closest('li').dataset.id;
-
+  idCard = getFullMovieInfo.id;
   // console.log(getFullMovieInfo.id);
 
   try {
@@ -107,7 +108,8 @@ function toModalLocalStorage() {
   setTimeout(() => {
     const buttonWathedModal = document.querySelector('.js-Wathed');
     const buttonQueueModal = document.querySelector('.js-Queuee');
-    const choiceLocalStorage = dateLocalWatch.find(el => el.id === dateFilm.id);
+    // const choiceLocalStorage = dateLocalWatch.find(el => el.id === dateFilm.id);
+    const choiceLocalStorage = dateLocalWatch.find(el => el.id == idCard);
     if (!choiceLocalStorage) {
       buttonWathedModal.textContent = 'REMOVED FROM QUEUE';
       // buttonQueueModal.textContent = 'ADD TO WATCHED';
@@ -136,15 +138,18 @@ modal.addEventListener('click', event => {
   if (event.target.classList.contains('js-Wathed')) {
     let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
     let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-    const findEl = dateLocalWatch.find(el => el.id === dateFilm.id);
+    // const findEl = dateLocalWatch.find(el => el.id === dateFilm.id);
+    const findEl = dateLocalWatch.find(el => el.id == idCard);
     // console.log(findEl);
     if (!findEl) {
-      const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+      // const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+      const newLocalQueue = dateLocalQueue.filter(el => el.id != idCard);
       // console.log(newLocalQueue);
       localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
       toCardModalLibrary();
     } else {
-      const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+      // const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+      const newLocalWatch = dateLocalWatch.filter(el => el.id != idCard);
       // console.log(newLocalWatch);
       localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(newLocalWatch));
       toCardModalLibrary();
@@ -156,11 +161,14 @@ modal.addEventListener('click', event => {
     console.log('jkjkkjkj');
     let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
     let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-    const findElWatch = dateLocalWatch.find(el => el.id === dateFilm.id);
-    const findElQueue = dateLocalQueue.find(el => el.id === dateFilm.id);
+    // const findElWatch = dateLocalWatch.find(el => el.id === dateFilm.id);
+    // const findElQueue = dateLocalQueue.find(el => el.id === dateFilm.id);
+    const findElWatch = dateLocalWatch.find(el => el.id == idCard);
+    const findElQueue = dateLocalQueue.find(el => el.id == idCard);
     console.log(findElWatch);
     if (!findElWatch) {
-      const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+      // const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+      const newLocalQueue = dateLocalQueue.filter(el => el.id != idCard);
       // console.log(newLocalQueue);
       localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
       dateLocalWatch.push(findElQueue);
@@ -168,7 +176,8 @@ modal.addEventListener('click', event => {
       // buttonQueueModal.textContent = 'ADD TO WATCHED';
       toCardModalLibrary();
     } else {
-      const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+      // const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+      const newLocalWatch = dateLocalWatch.filter(el => el.id != idCard);
       // console.log(newLocalWatch);
       localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(newLocalWatch));
       dateLocalQueue.push(findElWatch);
