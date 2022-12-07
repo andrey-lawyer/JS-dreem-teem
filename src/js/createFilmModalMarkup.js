@@ -129,72 +129,56 @@ function toModalLocalStorage() {
 const modal = document.querySelector('.modal__container');
 
 modal.addEventListener('click', event => {
-  setTimeout(() => {
-    // const buttonWathedModal = document.querySelector('.js-Wathed');
-    // const buttonQueueModal = document.querySelector('.js-Queuee');
-    //  удаление фильмов
-    if (event.target.classList.contains('js-Wathed')) {
-      let dateLocalWatch = JSON.parse(
-        localStorage.getItem(STORAGE_KEY_WATCHED)
-      );
-      let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-      const findEl = dateLocalWatch.find(el => el.id === dateFilm.id);
-      // console.log(findEl);
-      if (!findEl) {
-        const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
-        // console.log(newLocalQueue);
-        localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
-        toCardModalLibrary();
-      } else {
-        const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
-        // console.log(newLocalWatch);
-        localStorage.setItem(
-          STORAGE_KEY_WATCHED,
-          JSON.stringify(newLocalWatch)
-        );
-        toCardModalLibrary();
-      }
+  // setTimeout(() => {
+  // const buttonWathedModal = document.querySelector('.js-Wathed');
+  // const buttonQueueModal = document.querySelector('.js-Queuee');
+  //  удаление фильмов
+  if (event.target.classList.contains('js-Wathed')) {
+    let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+    let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+    const findEl = dateLocalWatch.find(el => el.id === dateFilm.id);
+    // console.log(findEl);
+    if (!findEl) {
+      const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+      // console.log(newLocalQueue);
+      localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
+      toCardModalLibrary();
+    } else {
+      const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+      // console.log(newLocalWatch);
+      localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(newLocalWatch));
+      toCardModalLibrary();
     }
-    //  удаление фильмов
+  }
+  //  удаление фильмов
+  // перенос фильмов
+  if (event.target.classList.contains('js-Queuee')) {
+    console.log('jkjkkjkj');
+    let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+    let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+    const findElWatch = dateLocalWatch.find(el => el.id === dateFilm.id);
+    const findElQueue = dateLocalQueue.find(el => el.id === dateFilm.id);
+    console.log(findElWatch);
+    if (!findElWatch) {
+      const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
+      // console.log(newLocalQueue);
+      localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
+      dateLocalWatch.push(findElQueue);
+      localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(dateLocalWatch));
+      // buttonQueueModal.textContent = 'ADD TO WATCHED';
+      toCardModalLibrary();
+    } else {
+      const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
+      // console.log(newLocalWatch);
+      localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(newLocalWatch));
+      dateLocalQueue.push(findElWatch);
+      localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(dateLocalQueue));
+      // buttonQueueModal.textContent = 'ADD TO QUEUE';
+      toCardModalLibrary();
+    }
     // перенос фильмов
-    if (event.target.classList.contains('js-Queuee')) {
-      console.log('jkjkkjkj');
-      let dateLocalWatch = JSON.parse(
-        localStorage.getItem(STORAGE_KEY_WATCHED)
-      );
-      let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-      const findElWatch = dateLocalWatch.find(el => el.id === dateFilm.id);
-      const findElQueue = dateLocalQueue.find(el => el.id === dateFilm.id);
-      console.log(findElWatch);
-      if (!findElWatch) {
-        const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
-        // console.log(newLocalQueue);
-        localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(newLocalQueue));
-        dateLocalWatch.push(findElQueue);
-        localStorage.setItem(
-          STORAGE_KEY_WATCHED,
-          JSON.stringify(dateLocalWatch)
-        );
-        // buttonQueueModal.textContent = 'ADD TO WATCHED';
-        toCardModalLibrary();
-      } else {
-        const newLocalWatch = dateLocalWatch.filter(el => el.id != dateFilm.id);
-        // console.log(newLocalWatch);
-        localStorage.setItem(
-          STORAGE_KEY_WATCHED,
-          JSON.stringify(newLocalWatch)
-        );
-        dateLocalQueue.push(findElWatch);
-        localStorage.setItem(
-          STORAGE_KEY_QUEUEE,
-          JSON.stringify(dateLocalQueue)
-        );
-        // buttonQueueModal.textContent = 'ADD TO QUEUE';
-        toCardModalLibrary();
-      }
-      // перенос фильмов
-    }
-  }, 0);
+  }
+  // }, 0);
 });
 
 // =========Sasha ========

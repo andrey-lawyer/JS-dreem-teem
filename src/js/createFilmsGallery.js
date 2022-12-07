@@ -393,7 +393,7 @@ function addLocalStorageQueue(date) {
 // console.log(localStorage);
 // const d = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 // console.log(d);
-localStorage.clear();
+// localStorage.clear();
 
 //  ===============SASHA ===============================   //
 const modal = document.querySelector('.modal__container');
