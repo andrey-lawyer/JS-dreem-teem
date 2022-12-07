@@ -33,6 +33,7 @@
   }
 }
 .header-container__main {
+  position: relative;
   padding-top: 40px;
   padding-bottom: 92px;
   max-width: 1280px;
@@ -75,7 +76,7 @@
 .current::after {
   content: '';
   position: absolute;
-  top: 58px;
+  top: 15px;
   width: 100%;
   height: 3px;
   // border-radius: 4px;
@@ -138,3 +139,25 @@
   justify-content: center;
 }
 
+
+//==========================================Authentication===============================================
+
+.auth-list{
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  display: flex;
+  // justify-content: end;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.auth__link{
+  text-decoration: none;
+  color: rgb(131, 131, 131);
+  font-weight: 200;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  text-align: center;
+  text-transform: uppercase;
+}

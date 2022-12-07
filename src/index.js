@@ -4,3 +4,7 @@ import './js/pagination';
 import './js/modal';
 import './js/modal-team';
 import './js/toTop';
+import './js/firebase';
+import './js/login-modal';
+import './js/signup-modal';
+// import './js/login-modal';
