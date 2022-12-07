@@ -33,10 +33,10 @@ export function toCardModalLibrary() {
   function CardsLoadmore(date, button) {
     counterBegin = 0;
     counterEnd = 0;
-    if (date.length <= 6) {
+    if (date.length <= 18) {
       refs.containerLibrary.innerHTML = createCards(date);
     } else {
-      refs.containerLibrary.innerHTML = createCards(date.slice(0, 6));
+      refs.containerLibrary.innerHTML = createCards(date.slice(0, 18));
       button.style.display = 'block';
     }
   }
@@ -55,8 +55,8 @@ export function toCardModalLibrary() {
   }
   // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   function onClickLoadMore(date, buttons) {
-    counterBegin += 6;
-    counterEnd += 12;
+    counterBegin += 18;
+    counterEnd += counterBegin + 18;
     if (date.length <= counterBegin) {
       buttons.style.display = 'none';
       // refs.buttonLoadMore.removeEventListener('click', onClickLoadMore);
