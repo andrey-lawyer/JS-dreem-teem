@@ -20,7 +20,6 @@ const inputEl = document.querySelector('#search__input');
 // const inputEl = document.querySelector('#search__input');
 //
 
-// uuuuuuuuuuu
 const STORAGE_KEY_WATCHED = 'wathedlist-films';
 const STORAGE_KEY_QUEUEE = 'queuee-films';
 // let dateLocalWatch;
@@ -30,7 +29,6 @@ let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 let dateFilm;
 let idCard;
 
-// uuuuuuuuuuuuuuuu
 //
 // =====================Spinner============================
 const opts = {
@@ -61,7 +59,7 @@ const onFilmCardClick = async event => {
   galleryEl.prepend(spinner.el);
 
   if (event.target.nodeName === 'UL') {
-    console.log('miss');
+    // console.log('miss');
     return;
   }
   getFullMovieInfo.id = event.target.closest('li').dataset.id;
@@ -158,14 +156,14 @@ modal.addEventListener('click', event => {
   //  удаление фильмов
   // перенос фильмов
   if (event.target.classList.contains('js-Queuee')) {
-    console.log('jkjkkjkj');
+    // console.log('jkjkkjkj');
     let dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
     let dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
     // const findElWatch = dateLocalWatch.find(el => el.id === dateFilm.id);
     // const findElQueue = dateLocalQueue.find(el => el.id === dateFilm.id);
     const findElWatch = dateLocalWatch.find(el => el.id == idCard);
     const findElQueue = dateLocalQueue.find(el => el.id == idCard);
-    console.log(findElWatch);
+    // console.log(findElWatch);
     if (!findElWatch) {
       // const newLocalQueue = dateLocalQueue.filter(el => el.id != dateFilm.id);
       const newLocalQueue = dateLocalQueue.filter(el => el.id != idCard);

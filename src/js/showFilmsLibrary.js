@@ -27,7 +27,7 @@ export function toCardModalLibrary() {
 
   refs.buttonLoadMoreWatched.style.display = 'none';
   refs.buttonLoadMoreQueue.style.display = 'none';
-
+  // !!!!!!!!!!!!!!!!!!!!!!
   let counterBegin = 0;
   let counterEnd = 0;
   function CardsLoadmore(date, button) {
@@ -41,7 +41,8 @@ export function toCardModalLibrary() {
     }
   }
   // console.log(parsedateLocalWathed);
-  if (!parsedateLocalWathed) {
+  // console.log(parsedateLocalWathed);
+  if (!parsedateLocalWathed || parsedateLocalWathed.length == 0) {
     const images = `
    <div >        
           <img src="https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg"
@@ -52,7 +53,7 @@ export function toCardModalLibrary() {
   } else {
     CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
   }
-
+  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   function onClickLoadMore(date, buttons) {
     counterBegin += 6;
     counterEnd += 12;
@@ -81,7 +82,7 @@ export function toCardModalLibrary() {
   const onShowQueue = () => {
     refs.buttonLibraryWatched.style.backgroundColor = 'transparent';
     refs.buttonLibraryQueue.style.backgroundColor = '#ff6b01';
-    if (!parsedateLocalQueuee) {
+    if (!parsedateLocalQueuee || parsedateLocalQueuee.length == 0) {
       const images = `
    <div >        
           <img src="https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg"
@@ -101,7 +102,7 @@ export function toCardModalLibrary() {
   const onShowWatched = () => {
     refs.buttonLibraryQueue.style.backgroundColor = 'transparent';
     refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
-    if (!parsedateLocalWathed) {
+    if (!parsedateLocalWathed || parsedateLocalWathed.length == 0) {
       const images = `
    <div >        
           <img src="https://cdn.pixabay.com/photo/2016/09/14/08/18/film-1668918_1280.jpg"
