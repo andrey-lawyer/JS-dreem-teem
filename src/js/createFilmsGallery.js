@@ -6,6 +6,10 @@ import { Trending } from './trending';
 import { genres } from './genres';
 import { Spinner } from 'spin.js';
 import { GetFullMovieInfo } from './getFullMovieInfo';
+import { initializeApp } from 'firebase/app';
+import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import { firebaseConfig, auth, db } from './initilizeFB';
+
 
 const searchFormEl = document.querySelector('.js-search-form');
 const galleryEl = document.querySelector('.js-gallery-home');
@@ -241,13 +245,14 @@ const onFilmCardClick = async event => {
     jsContainer.innerHTML = createMovieInfoModal(response.data);
     // Add local storage!!!!!!!!!!!!!!!
     dateFilm = response.data;
+   
     // buttonWathedModal.disabled = false;
     // buttonQueueModal.disabled = false;
     // Add local storage!!!!!!!!!!!!!!!!
   } catch (error) {
     Notiflix.Notify.failure(console.log(error));
   }
-
+  
   spinner.stop();
 };
 
@@ -396,6 +401,17 @@ function addLocalStorageQueue(date) {
 // localStorage.clear();
 
 //  ===============SASHA ===============================   //
+// const firebaseConfig = {
+//       apiKey: 'AIzaSyCrP7E5haKTVyI6lKJMTMvuMBrP4RzO9c4',
+//       authDomain: 'fir-ninja-f883b.firebaseapp.com',
+//       projectId: 'fir-ninja-f883b',
+//       appId: '1:103219943409:web:44692b24dfc2797317d650',
+//       measurementId: 'G-Z7SKLQBVFJ',
+//     };
+//     const app = initializeApp(firebaseConfig);
+//     // Make auth and firestore references
+//     const db = getFirestore(app);
+
 const modal = document.querySelector('.modal__container');
 
 modal.addEventListener('click', event => {
@@ -408,6 +424,11 @@ modal.addEventListener('click', event => {
     button.disabled = true;
     button.textContent = 'Added to Queue';
 
+     //-----------------------------------------------------------------Adding film info to DB list queue in firestore-------------------------------------------------------
+    const colRef = collection(db, "Queue");
+    addDoc(colRef, { ...dateFilm });
+    console.log("onFilmCardClick ~ dateFilm", dateFilm)
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------
     // button.addEventListener('click', event => removeFromLS());
   }
 
@@ -419,7 +440,13 @@ modal.addEventListener('click', event => {
     const button = document.querySelector('.js-Wathed');
     button.disabled = true;
     button.textContent = 'Added to Watched';
+
+    //-------------------------------------------------------------------Adding film info to DB list watched in firebase--------------------------------------------------
+    const colRef = collection(db, "Watched");
+    addDoc(colRef, { ...dateFilm });
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   }
 });
 
 // =========Sasha ========    ///
+

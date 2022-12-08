@@ -55,3 +55,4 @@ function closeOnClick(event) {
     modalClose();
   }
 }
+
