@@ -41,15 +41,22 @@ function getQueue() {
 }
 
 // =====================================Listen for auth status changes===================
+const btnWatchRef = document.querySelector('.js-library-watch');
+const btnQueueRef = document.querySelector('.js-library-queue');
+
 onAuthStateChanged(auth, user => {
   console.log('user', user);
-  if (user) {
-    getQueue();
-    console.log('User logged in. User id: ', user.uid);
+    if (user) {
+      btnWatchRef.removeAttribute('disabled');
+      btnQueueRef.removeAttribute('disabled');
+      getQueue();
+      console.log('User logged in. User id: ', user.uid);
   } else {
     // User is signed out
-    console.log('User logged out');
-    // alert('Please Log in');
+      console.log('User logged out');
+      setupLib([]);
+      btnWatchRef.setAttribute('disabled', true);
+      btnQueueRef.setAttribute('disabled', true);
   }
 });
 

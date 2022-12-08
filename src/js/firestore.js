@@ -1,5 +1,6 @@
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
+import setupLib from './setupLib'; 
 
 //=================================================CONFIG=================================
 const firebaseConfig = {
@@ -16,34 +17,25 @@ const app = initializeApp(firebaseConfig);
 // Make auth and firestore references
 const db = getFirestore(app);
 
-// const libraryList = document.querySelector('.js-gallery-library');
-// function setupLib(data) { 
-
-// }
-
 // Get Data
 const queueRef = document.querySelector('.js-library-queue');
-console.log("queueRef", queueRef);
+// console.log("queueRef", queueRef);
 queueRef.addEventListener('click', getQueue);
-const colRef = collection(db, "guides")
+const colRef = collection(db, "guides");
 
-function getQueue() { 
-  getDocs(colRef) 
+export function getQueue() { 
+  getDocs(colRef)
     .then((snapshot) => {
-      console.log("snapshot", snapshot.docs)
-      let guides = [];
-      snapshot.docs.forEach((doc) => {
-        guides.push({ ...doc.data(), id: doc.id })
-        });
-      console.log(guides);
+      console.log("snapshot", snapshot.docs);
+      setupLib(snapshot.docs);
     })
-   .catch(err => console.log(err))
+    .catch(err => console.log(err));
 }
 // fetchFilmsByID()
 // Add Data
-const queueBtnRef = document.querySelector('.js-Queuee')
-queueBtnRef.addEventListener('click', addFilmQueue)
-function addFilmQueue(event) { 
-    event.preventDefault();
-    addDoc(colRef, {...dateFilm})
-}
+// const queueBtnRef = document.querySelector('.js-Queuee')
+// queueBtnRef.addEventListener('click', addFilmQueue)
+// function addFilmQueue(event) { 
+//     event.preventDefault();
+//     addDoc(colRef, {...dateFilm})
+// }

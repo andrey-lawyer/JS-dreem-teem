@@ -19,8 +19,8 @@ const refs = {
   buttonLoadMoreWatched: document.querySelector('.watched'),
   buttonLoadMoreQueue: document.querySelector('.queue'),
 };
-
-refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
+//===========================================================================Anton============================
+// refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
 
 // LOAD-MORE!!!!!!!!!!!!!!!!!!!!!!
 
@@ -91,8 +91,9 @@ const onShowQueue = () => {
     refs.buttonLoadMoreWatched.style.display = 'none';
     // refs.containerLibrary.innerHTML = createCards(parsedateLocalQueuee);
     CardsLoadmore(parsedateLocalQueuee, refs.buttonLoadMoreQueue);
-    refs.buttonLibraryWatched.style.backgroundColor = 'transparent';
-    refs.buttonLibraryQueue.style.backgroundColor = '#ff6b01';
+    //=============================================================================Anton===================
+    // refs.buttonLibraryWatched.style.backgroundColor = 'transparent';
+    // refs.buttonLibraryQueue.style.backgroundColor = '#ff6b01';
   }
 };
 
@@ -110,8 +111,9 @@ const onShowWatched = () => {
   } else {
     refs.buttonLoadMoreQueue.style.display = 'none';
     CardsLoadmore(parsedateLocalWathed, refs.buttonLoadMoreWatched);
-    refs.buttonLibraryQueue.style.backgroundColor = 'transparent';
-    refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
+    //==============================================================================Anton=====================
+    // refs.buttonLibraryQueue.style.backgroundColor = 'transparent';
+    // refs.buttonLibraryWatched.style.backgroundColor = '#ff6b01';
   }
 };
 refs.buttonLibraryWatched.addEventListener('click', onShowWatched);

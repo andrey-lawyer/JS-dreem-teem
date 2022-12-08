@@ -23,28 +23,27 @@ const app = initializeApp(firebaseConfig);
 
 // Make auth and firestore references
 const auth = getAuth(app);
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
-//=================================================================================================DATA===================================================================
-const queueRef = document.querySelector('.js-library-queue');
-// console.log("queueRef", queueRef);
-queueRef.addEventListener('click', getQueue);
-const colRef = collection(db, "guides");
+// //=================================================================================================DATA===================================================================
+// const queueRef = document.querySelector('.js-library-queue');
+// // console.log("queueRef", queueRef);
+// queueRef.addEventListener('click', getQueue);
+// const colRef = collection(db, "guides");
 
-function getQueue() { 
-  getDocs(colRef)
-    .then((snapshot) => {
-      console.log("snapshot", snapshot.docs);
-      setupLib(snapshot.docs);
-    })
-    .catch(err => console.log(err));
-}
+// function getQueue() { 
+//   getDocs(colRef)
+//     .then((snapshot) => {
+//       console.log("snapshot", snapshot.docs);
+//       setupLib(snapshot.docs);
+//     })
+//     .catch(err => console.log(err));
+// }
 
 // =====================================Listen for auth status changes===================
 onAuthStateChanged(auth, user => {
   console.log('user', user);
   if (user) {
-    getQueue();
     console.log('User logged in. User id: ', user.uid);
   } else {
     // User is signed out
@@ -112,4 +111,3 @@ function onLoginBtn(event) {
       const errorMessage = error.message;
     });
 }
-
