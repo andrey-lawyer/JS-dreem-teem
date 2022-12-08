@@ -111,7 +111,7 @@ function onLoginBtn(event) {
       const user = userCredential.user;
       console.log(user);
       loginForm.reset();
-      alert('Authentication was successful');
+    //   alert('Authentication was successful');
     })
     .catch(error => {
       alert('there is no user with such email or password');
