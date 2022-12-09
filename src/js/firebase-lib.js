@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
 import setupLib from './setupLib'; 
-import setupUI from './setupUi';
+import { setupUI } from './setupUi';
 import { firebaseConfig, auth, db } from './initilizeFB';
 import { onSignup, onLoginBtn, onLogoutBtn, signupForm, logout, loginForm } from './initilizeFB';
 

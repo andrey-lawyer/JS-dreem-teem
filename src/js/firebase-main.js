@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth';
-import setupUI from './setupUi';
+import { setupUI } from './setupUi';
 import { firebaseConfig, auth, db } from './initilizeFB';
 import { onSignup, onLoginBtn, onLogoutBtn, signupForm, logout, loginForm } from './initilizeFB';
 import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';

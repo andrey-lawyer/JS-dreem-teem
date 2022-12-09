@@ -401,17 +401,6 @@ function addLocalStorageQueue(date) {
 // localStorage.clear();
 
 //  ===============SASHA ===============================   //
-// const firebaseConfig = {
-//       apiKey: 'AIzaSyCrP7E5haKTVyI6lKJMTMvuMBrP4RzO9c4',
-//       authDomain: 'fir-ninja-f883b.firebaseapp.com',
-//       projectId: 'fir-ninja-f883b',
-//       appId: '1:103219943409:web:44692b24dfc2797317d650',
-//       measurementId: 'G-Z7SKLQBVFJ',
-//     };
-//     const app = initializeApp(firebaseConfig);
-//     // Make auth and firestore references
-//     const db = getFirestore(app);
-
 const modal = document.querySelector('.modal__container');
 
 modal.addEventListener('click', event => {

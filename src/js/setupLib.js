@@ -8,15 +8,15 @@ export default function setupLib(data) {
             const guide = doc.data();
             console.log('data',guide);
             const li = `
-                <li class='gallery__item' data-id=${id}>
+                <li class='gallery__item' data-id=${guide.id}>
                     <div class='block__image'>
-                        <img class='gallery__image' src='https://image.tmdb.org/t/p/w500${poster_path}' alt='${title}'
+                        <img class='gallery__image' src='https://image.tmdb.org/t/p/w500${guide.poster_path}' alt='${guide.title}'
                             loading='lazy' />
                     </div>
                     <div class='info_movie'>
-                        <h2 class='name_movie'>${title}
+                        <h2 class='name_movie'>${guide.title}
                         </h2>
-                        <p class='genre_movie'>${genres}${release_date}<span class='reting'>${{ vote_average}}</span></p>
+                        <p class='genre_movie'>${guide.genres}${guide.release_date}<span class='reting'>${guide.vote_average}</span></p>
                     </div>
                 </li>
             `

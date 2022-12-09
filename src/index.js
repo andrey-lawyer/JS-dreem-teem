@@ -6,6 +6,7 @@ import './js/modal-team';
 import './js/toTop';
 import './js/signup-modal';
 import './js/login-modal';
+import './js/account-modal';
 import './js/firebase-main';
 // import './js/firebase';
 // import './js/login-modal';
