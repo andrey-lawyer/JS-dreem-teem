@@ -265,136 +265,137 @@ galleryEl.addEventListener('click', onFilmCardClick);
 // buttonQueueModal.addEventListener('click', () => {
 //   addLocalStorageQueue(dateFilm);
 // });
+//------------------------------------------------------------------------------------------------------------------------
+// function addLocalStorageWatch(date) {
+//   // buttonWathedModal.disabled = true;
+//   // buttonQueueModal.disabled = true;
+//   let {
+//     genres,
+//     homepage,
+//     id,
+//     original_title,
+//     poster_path,
+//     title,
+//     vote_average,
+//     vote_count,
+//     popularity,
+//     release_date,
+//   } = date;
+//   let dateLocalWatch;
+//   let dateLocalQueue;
+//   dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+//   dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+//   let arrayWathed;
+//   let arrayQueue;
+//   arrayWathed = dateLocalWatch ? dateLocalWatch : [];
+//   arrayQueue = dateLocalQueue ? dateLocalQueue : [];
+//   // console.log(arrayWathed);
+//   // console.log(arrayQueue);
+//   // console.log(localStorage.getItem(STORAGE_KEY_WATCHED));
+//   // console.log(dateLocalWatch);
+//   if (arrayWathed.length > 0) {
+//     const findWatch = dateLocalWatch.find(el => el.id === id);
+//     if (findWatch) {
+//       Notiflix.Notify.failure('Sorry, this movie has already been added');
+//       return;
+//     }
+//   }
+//   if (arrayQueue.length > 0) {
+//     const findQueue = dateLocalQueue.find(el => el.id === id);
+//     if (findQueue) {
+//       Notiflix.Notify.failure('Sorry, this movie has already been added');
+//       return;
+//     }
+//   }
 
-function addLocalStorageWatch(date) {
-  // buttonWathedModal.disabled = true;
-  // buttonQueueModal.disabled = true;
-  let {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  } = date;
-  let dateLocalWatch;
-  let dateLocalQueue;
-  dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-  let arrayWathed;
-  let arrayQueue;
-  arrayWathed = dateLocalWatch ? dateLocalWatch : [];
-  arrayQueue = dateLocalQueue ? dateLocalQueue : [];
-  // console.log(arrayWathed);
-  // console.log(arrayQueue);
-  // console.log(localStorage.getItem(STORAGE_KEY_WATCHED));
-  // console.log(dateLocalWatch);
-  if (arrayWathed.length > 0) {
-    const findWatch = dateLocalWatch.find(el => el.id === id);
-    if (findWatch) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
-  if (arrayQueue.length > 0) {
-    const findQueue = dateLocalQueue.find(el => el.id === id);
-    if (findQueue) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
+//   if (genres.length > 3) {
+//     genres = [genres[0], genres[1], 'Оther'];
+//   }
+//   genres = genres.join();
+//   release_date = ' |  ' + release_date.slice(0, 4);
+//   const newObject = {
+//     genres,
+//     homepage,
+//     id,
+//     original_title,
+//     poster_path,
+//     title,
+//     vote_average,
+//     vote_count,
+//     popularity,
+//     release_date,
+//   };
 
-  if (genres.length > 3) {
-    genres = [genres[0], genres[1], 'Оther'];
-  }
-  genres = genres.join();
-  release_date = ' |  ' + release_date.slice(0, 4);
-  const newObject = {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  };
+//   arrayWathed.push(newObject);
+//   localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(arrayWathed));
 
-  arrayWathed.push(newObject);
-  localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(arrayWathed));
+//   // const dateLocal = localStorage.getItem(STORAGE_KEY_WATCHED);
+//   // console.log(JSON.parse(dateLocal));
+// }
 
-  // const dateLocal = localStorage.getItem(STORAGE_KEY_WATCHED);
-  // console.log(JSON.parse(dateLocal));
-}
+// function addLocalStorageQueue(date) {
+//   // buttonWathedModal.disabled = true;
+//   // buttonQueueModal.disabled = true;
+//   let {
+//     genres,
+//     homepage,
+//     id,
+//     original_title,
+//     poster_path,
+//     title,
+//     vote_average,
+//     vote_count,
+//     popularity,
+//     release_date,
+//   } = date;
 
-function addLocalStorageQueue(date) {
-  // buttonWathedModal.disabled = true;
-  // buttonQueueModal.disabled = true;
-  let {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  } = date;
+//   let dateLocalWatch;
+//   let dateLocalQueue;
+//   dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+//   dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+//   let arrayWathed;
+//   let arrayQueue;
+//   arrayWathed = dateLocalWatch ? dateLocalWatch : [];
+//   arrayQueue = dateLocalQueue ? dateLocalQueue : [];
+//   // const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
+//   // const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 
-  let dateLocalWatch;
-  let dateLocalQueue;
-  dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
-  let arrayWathed;
-  let arrayQueue;
-  arrayWathed = dateLocalWatch ? dateLocalWatch : [];
-  arrayQueue = dateLocalQueue ? dateLocalQueue : [];
-  // const dateLocalWatch = JSON.parse(localStorage.getItem(STORAGE_KEY_WATCHED));
-  // const dateLocalQueue = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
+//   if (arrayWathed.length > 0) {
+//     const findWatch = dateLocalWatch.find(el => el.id === id);
+//     if (findWatch) {
+//       Notiflix.Notify.failure('Sorry, this movie has already been added');
+//       return;
+//     }
+//   }
+//   if (arrayQueue.length > 0) {
+//     const findQueue = dateLocalQueue.find(el => el.id === id);
+//     if (findQueue) {
+//       Notiflix.Notify.failure('Sorry, this movie has already been added');
+//       return;
+//     }
+//   }
 
-  if (arrayWathed.length > 0) {
-    const findWatch = dateLocalWatch.find(el => el.id === id);
-    if (findWatch) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
-  if (arrayQueue.length > 0) {
-    const findQueue = dateLocalQueue.find(el => el.id === id);
-    if (findQueue) {
-      Notiflix.Notify.failure('Sorry, this movie has already been added');
-      return;
-    }
-  }
-
-  if (genres.length > 3) {
-    genres = [genres[0], genres[1], 'Оther'];
-  }
-  genres = genres.join();
-  release_date = ' |  ' + release_date.slice(0, 4);
-  const newObject = {
-    genres,
-    homepage,
-    id,
-    original_title,
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    release_date,
-  };
-  arrayQueue.push(newObject);
-  localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(arrayQueue));
-}
+//   if (genres.length > 3) {
+//     genres = [genres[0], genres[1], 'Оther'];
+//   }
+//   genres = genres.join();
+//   release_date = ' |  ' + release_date.slice(0, 4);
+//   const newObject = {
+//     genres,
+//     homepage,
+//     id,
+//     original_title,
+//     poster_path,
+//     title,
+//     vote_average,
+//     vote_count,
+//     popularity,
+//     release_date,
+//   };
+//   arrayQueue.push(newObject);
+//   localStorage.setItem(STORAGE_KEY_QUEUEE, JSON.stringify(arrayQueue));
+// }
+//------------------------------------------------------------------------------------------------------------------------
 // console.log(localStorage);
 // const d = JSON.parse(localStorage.getItem(STORAGE_KEY_QUEUEE));
 // console.log(d);
@@ -407,7 +408,7 @@ modal.addEventListener('click', event => {
   if (event.target.classList.contains('js-Queuee')) {
     // console.log('Q');
 
-    addLocalStorageQueue(dateFilm);
+    // addLocalStorageQueue(dateFilm);
 
     let button = document.querySelector('.js-Queuee');
     button.disabled = true;
@@ -416,7 +417,7 @@ modal.addEventListener('click', event => {
      //-----------------------------------------------------------------Adding film info to DB list queue in firestore-------------------------------------------------------
     const colRef = collection(db, "Queue");
     addDoc(colRef, { ...dateFilm });
-    console.log("onFilmCardClick ~ dateFilm", dateFilm)
+    console.log("dateFilm", dateFilm)
     //------------------------------------------------------------------------------------------------------------------------------------------------------------
     // button.addEventListener('click', event => removeFromLS());
   }
@@ -424,7 +425,7 @@ modal.addEventListener('click', event => {
   if (event.target.classList.contains('js-Wathed')) {
     // console.log('W');
 
-    addLocalStorageWatch(dateFilm);
+    // addLocalStorageWatch(dateFilm);
 
     const button = document.querySelector('.js-Wathed');
     button.disabled = true;
@@ -433,6 +434,8 @@ modal.addEventListener('click', event => {
     //-------------------------------------------------------------------Adding film info to DB list watched in firebase--------------------------------------------------
     const colRef = collection(db, "Watched");
     addDoc(colRef, { ...dateFilm });
+    console.log("dateFilm", dateFilm)
+    
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   }
 });

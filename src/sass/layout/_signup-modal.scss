@@ -29,6 +29,8 @@
 
 .modal__content h4 {
     text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
 }
 
 .input-field {
@@ -77,3 +79,25 @@
         height: 42px;
     }
 }
+
+.signup-input {
+    color: var(--color-font-secondary);
+    height: 30px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid var(--color-font-secondary);
+}
+
+.signup-input:hover,
+.signup-input:focus {
+    color: var(--color-font-secondary);
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid var(--color-accent-red);
+    transition: border-bottom 250ms ease-in-out;
+}
+

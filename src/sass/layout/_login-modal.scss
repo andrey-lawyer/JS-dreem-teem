@@ -30,3 +30,32 @@
         height: 42px;
     }
 }
+
+// #login-email{
+//     color: var(--color-font-secondary);
+//     width: 100%;
+//     background-color: transparent;
+//     border: none;
+//     outline: none;
+//     border-bottom: 0.5px solid var(--color-font-secondary);
+// }
+.login-input {
+    color: var(--color-font-secondary);
+    height: 30px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid var(--color-font-secondary);
+}
+
+.login-input:hover,
+.login-input:focus {
+    color: var(--color-font-secondary);
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.5px solid var(--color-accent-red);
+    transition: border-bottom 250ms ease-in-out;
+}
