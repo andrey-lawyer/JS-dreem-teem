@@ -6,7 +6,7 @@ export function setupUI(user){
     if (user) {
         //show account info
         const html = `
-        <div> Logged in as ${user.email}</div>
+        <p> Logged in as ${user.email}</p>
         `
         accountRef.innerHTML = html;
         //toggel UI eleemnts
